@@ -110,7 +110,8 @@ All list endpoints support:
 
 **Option A: Use the SQL file (Recommended)**
 
-Copy and paste the contents of `database-schema.sql` into Supabase SQL Editor, then click **Run**.
+- **For default 'public' schema**: Copy and paste the contents of `database-schema.sql` into Supabase SQL Editor, then click **Run**.
+- **For custom schema**: Use `database-schema-with-schema.sql` instead. Replace `YOUR_SCHEMA_NAME` with your actual schema name (e.g., 'konoland-schema'), then run it.
 
 **Option B: Copy SQL manually**
 
@@ -176,10 +177,19 @@ CSV files are in `data/2022/` directory - **ready to import, columns match datab
 
 ### Step 4: Configure Environment Variables
 
-In Vercel dashboard, add:
+In Vercel dashboard (or `.env` file for local development), add:
 - `DATABASE_URL` - Your Supabase Connection Pooling URL
-- `NODE_ENV=production`
-- `APP_ENV=production`
+- `NODE_ENV=production` (or `development` for local)
+- `APP_ENV=production` (or `development` for local)
+- `DATABASE_SCHEMA` (Optional) - Specify a custom schema name if you're not using the default 'public' schema
+
+**Example `.env` file:**
+```env
+DATABASE_URL=postgresql://postgres.[PROJECT-REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true
+NODE_ENV=production
+APP_ENV=production
+DATABASE_SCHEMA=aloe  # Optional: only if using a custom schema
+```
 
 ## 🛠️ Local Development
 

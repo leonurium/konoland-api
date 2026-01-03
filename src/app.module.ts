@@ -18,16 +18,26 @@ import { Village } from './entities/village.entity';
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        url: configService.get<string>('DATABASE_URL'),
-        entities: [Province, Regency, District, Village],
-        synchronize: false, // Use migrations in production
-        ssl: configService.get<string>('NODE_ENV') === 'production' 
+      useFactory: (configService: ConfigService) => {
+        const config: any = {
+          type: 'postgres',
+          url: configService.get<string>('DATABASE_URL'),
+          entities: [Province, Regency, District, Village],
+          synchronize: false, // Use migrations in production
+          ssl: configService.get<string>('NODE_ENV') === 'production' 
           ? { rejectUnauthorized: false } 
           : false,
-        logging: configService.get<string>('NODE_ENV') === 'development',
-      }),
+          logging: configService.get<string>('NODE_ENV') === 'development',
+        };
+
+        // Add schema if specified in environment variable
+        const schema = configService.get<string>('DATABASE_SCHEMA');
+        if (schema) {
+          config.schema = schema;
+        }
+
+        return config;
+      },
       inject: [ConfigService],
     }),
     ProvinceModule,

@@ -1,5 +1,14 @@
 -- Konoha Land API Database Schema
 -- This schema matches the CSV file structure exactly
+--
+-- USAGE:
+-- 1. For default 'public' schema: Run this file as-is (no changes needed)
+-- 2. For custom schema: Use database-schema-with-schema.sql instead
+--    OR manually add schema prefix to table names (e.g., schema_name.table_name)
+--
+-- NOTE: If you're using a custom schema, make sure to:
+-- - Set DATABASE_SCHEMA in your .env file
+-- - Use database-schema-with-schema.sql for creating tables in that schema
 
 -- Create provinces table
 CREATE TABLE provinces (
