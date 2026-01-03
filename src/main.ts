@@ -29,8 +29,16 @@ async function createNestApp(): Promise<express.Express> {
 
 // For Vercel serverless function
 export default async function handler(req: express.Request, res: express.Response) {
-  const app = await createNestApp();
-  return app(req, res);
+  try {
+    const app = await createNestApp();
+    return app(req, res);
+  } catch (error) {
+    console.error('Serverless function error:', error);
+    res.status(500).json({
+      error: 'Internal server error',
+      message: error instanceof Error ? error.message : 'Unknown error',
+    });
+  }
 }
 
 // For regular server (local development, PM2, etc.)

@@ -1,6 +1,6 @@
 <div align="center">
 
-![Konoha Land API Banner](https://raw.githubusercontent.com/leonurium/konoland-api/main/banner.png)
+![Konoha Land API Banner](./banner.png)
 
 # 🌏 Konoha Land API
 
