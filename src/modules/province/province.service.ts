@@ -12,7 +12,7 @@ export class ProvinceService {
   ) {}
 
   async getProvinces(getProvincesQuery: GetProvincesDTO) {
-    const { limit = 10, page = 1, name, code } = getProvincesQuery;
+    const { limit = 10, page = 1, name, code, sortBy, sortDirection = 'ASC' } = getProvincesQuery;
 
     // If code is provided, return the entity directly (backward compatibility)
     if (code) {
@@ -26,11 +26,16 @@ export class ProvinceService {
       where.province = Like(`%${name}%`);
     }
 
+    // Define allowed sort fields to prevent SQL injection
+    const allowedSortFields = ['code', 'province'];
+    const orderField = sortBy && allowedSortFields.includes(sortBy) ? sortBy : 'code';
+    const orderDirection = sortDirection.toUpperCase() as 'ASC' | 'DESC';
+
     const [provinces, total] = await this.provinceRepository.findAndCount({
       where,
       take: limit,
       skip: (page - 1) * limit,
-      order: { code: 'ASC' },
+      order: { [orderField]: orderDirection },
     });
 
     return {

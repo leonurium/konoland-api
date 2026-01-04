@@ -12,7 +12,7 @@ export class VillageService {
   ) {}
 
   async getVillages(getVillagesQuery: GetVillagesDTO) {
-    const { limit = 10, page = 1, name, code, districtCode } = getVillagesQuery;
+    const { limit = 10, page = 1, name, code, districtCode, sortBy, sortDirection = 'ASC' } = getVillagesQuery;
 
     // If code is provided, return the entity directly (backward compatibility)
     if (code) {
@@ -30,12 +30,17 @@ export class VillageService {
       where.districtCode = districtCode;
     }
 
+    // Define allowed sort fields to prevent SQL injection
+    const allowedSortFields = ['code', 'village', 'districtCode', 'postalCode'];
+    const orderField = sortBy && allowedSortFields.includes(sortBy) ? sortBy : 'code';
+    const orderDirection = sortDirection.toUpperCase() as 'ASC' | 'DESC';
+
     const [villages, total] = await this.villageRepository.findAndCount({
       where,
       relations: ['district'],
       take: limit,
       skip: (page - 1) * limit,
-      order: { code: 'ASC' },
+      order: { [orderField]: orderDirection },
     });
 
     return {

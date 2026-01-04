@@ -94,9 +94,31 @@ All list endpoints support:
 - `limit` - Items per page (default: 10)
 - `name` - Search by name (partial match)
 - `code` - Filter by code (returns entity directly)
+- `sortBy` - Field to sort by (optional, defaults to `code`)
+- `sortDirection` - Sort direction: `ASC` or `DESC` (default: `ASC`)
 - `provinceCode` - Filter by parent province
 - `regencyCode` - Filter by parent regency
 - `districtCode` - Filter by parent district
+
+#### Sorting Options
+
+Each endpoint supports different sort fields:
+- **Provinces**: `code`, `province`
+- **Regencies**: `code`, `regency`, `provinceCode`, `type`
+- **Districts**: `code`, `district`, `regencyCode`
+- **Villages**: `code`, `village`, `districtCode`, `postalCode`
+
+**Examples:**
+```bash
+# Sort provinces by name in ascending order
+GET /province?sortBy=province&sortDirection=ASC
+
+# Sort regencies by name in descending order
+GET /regency?provinceCode=11&sortBy=regency&sortDirection=DESC
+
+# Default behavior (no sorting params = sort by code ASC)
+GET /province
+```
 
 ## 🗄️ Database Setup (For Self-Hosting)
 
@@ -188,7 +210,7 @@ In Vercel dashboard (or `.env` file for local development), add:
 DATABASE_URL=postgresql://postgres.[PROJECT-REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true
 NODE_ENV=production
 APP_ENV=production
-DATABASE_SCHEMA=aloe  # Optional: only if using a custom schema
+DATABASE_SCHEMA=konoland-schema  # Optional: only if using a custom schema
 ```
 
 ## 🛠️ Local Development

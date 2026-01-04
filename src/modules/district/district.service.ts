@@ -12,7 +12,7 @@ export class DistrictService {
   ) {}
 
   async getDistricts(getDistrictsQuery: GetDistrictsDTO) {
-    const { limit = 10, page = 1, name, code, regencyCode } = getDistrictsQuery;
+    const { limit = 10, page = 1, name, code, regencyCode, sortBy, sortDirection = 'ASC' } = getDistrictsQuery;
 
     // If code is provided, return the entity directly (backward compatibility)
     if (code) {
@@ -30,12 +30,17 @@ export class DistrictService {
       where.regencyCode = regencyCode;
     }
 
+    // Define allowed sort fields to prevent SQL injection
+    const allowedSortFields = ['code', 'district', 'regencyCode'];
+    const orderField = sortBy && allowedSortFields.includes(sortBy) ? sortBy : 'code';
+    const orderDirection = sortDirection.toUpperCase() as 'ASC' | 'DESC';
+
     const [districts, total] = await this.districtRepository.findAndCount({
       where,
       relations: ['regency'],
       take: limit,
       skip: (page - 1) * limit,
-      order: { code: 'ASC' },
+      order: { [orderField]: orderDirection },
     });
 
     return {

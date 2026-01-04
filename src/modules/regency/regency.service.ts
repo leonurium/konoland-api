@@ -12,7 +12,7 @@ export class RegencyService {
   ) {}
 
   async getRegencies(getRegenciesQuery: GetRegenciesDTO) {
-    const { limit = 10, page = 1, name, code, provinceCode } = getRegenciesQuery;
+    const { limit = 10, page = 1, name, code, provinceCode, sortBy, sortDirection = 'ASC' } = getRegenciesQuery;
 
     // If code is provided, return the entity directly (backward compatibility)
     if (code) {
@@ -30,12 +30,17 @@ export class RegencyService {
       where.provinceCode = provinceCode;
     }
 
+    // Define allowed sort fields to prevent SQL injection
+    const allowedSortFields = ['code', 'regency', 'provinceCode', 'type'];
+    const orderField = sortBy && allowedSortFields.includes(sortBy) ? sortBy : 'code';
+    const orderDirection = sortDirection.toUpperCase() as 'ASC' | 'DESC';
+
     const [regencies, total] = await this.regencyRepository.findAndCount({
       where,
       relations: ['province'],
       take: limit,
       skip: (page - 1) * limit,
-      order: { code: 'ASC' },
+      order: { [orderField]: orderDirection },
     });
 
     return {

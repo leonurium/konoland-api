@@ -30,8 +30,8 @@ async function createNestApp(): Promise<express.Express> {
 // For Vercel serverless function
 export default async function handler(req: express.Request, res: express.Response) {
   try {
-    const app = await createNestApp();
-    return app(req, res);
+  const app = await createNestApp();
+  return app(req, res);
   } catch (error) {
     console.error('Serverless function error:', error);
     res.status(500).json({
