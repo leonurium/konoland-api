@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { ProvinceModule } from './modules/province/province.module';
 import { RegencyModule } from './modules/regency/regency.module';
 import { DistrictModule } from './modules/district/district.module';
@@ -9,9 +11,14 @@ import { Province } from './entities/province.entity';
 import { Regency } from './entities/regency.entity';
 import { District } from './entities/district.entity';
 import { Village } from './entities/village.entity';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      exclude: ['/province*', '/regency*', '/district*', '/village*'],
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
@@ -45,6 +52,7 @@ import { Village } from './entities/village.entity';
     DistrictModule,
     VillageModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
 

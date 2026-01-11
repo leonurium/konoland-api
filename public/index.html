@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌏 Konoha Land API - Free Indonesian Administrative Regions API</title>
+    <meta name="description" content="Free, open-source REST API providing comprehensive data about Indonesian administrative regions (Provinces, Regencies, Districts, and Villages)">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --dark-lighter: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --glow: rgba(99, 102, 241, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--dark);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            animation: drift 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5%, 5%); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5em;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .badge:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        /* Code Preview */
+        .code-preview {
+            max-width: 900px;
+            margin: 60px auto 0;
+            background: var(--dark-light);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: var(--dark-lighter);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot:nth-child(1) { background: #ff5f56; }
+        .dot:nth-child(2) { background: #ffbd2e; }
+        .dot:nth-child(3) { background: #27c93f; }
+
+        .code-title {
+            margin-left: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            color: var(--text-muted);
+        }
+
+        .code-content {
+            padding: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+            color: var(--text);
+            position: relative;
+        }
+
+        .code-line {
+            display: flex;
+            gap: 20px;
+        }
+
+        .line-number {
+            color: var(--text-muted);
+            user-select: none;
+            min-width: 30px;
+            text-align: right;
+        }
+
+        .keyword { color: #c792ea; }
+        .string { color: #c3e88d; }
+        .function { color: #82aaff; }
+        .comment { color: var(--text-muted); font-style: italic; }
+        .property { color: #f07178; }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+
+        .stat-card {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 4em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 100px 40px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.2em;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* API Playground */
+        .playground-section {
+            padding: 100px 40px;
+        }
+
+        .api-playground {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            background: var(--dark-light);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .playground-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background: var(--dark-lighter);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .endpoint-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .endpoint-tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .endpoint-tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .endpoint-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .playground-content {
+            padding: 30px;
+        }
+
+        .request-block {
+            margin-bottom: 20px;
+        }
+
+        .request-label {
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .request-url {
+            display: flex;
+            align-items: center;
+            background: var(--dark-lighter);
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .method-badge {
+            padding: 5px 12px;
+            background: var(--success);
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 15px;
+            color: white;
+        }
+
+        .url-text {
+            flex: 1;
+            color: var(--text-muted);
+        }
+
+        .copy-icon {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 15px;
+        }
+
+        .copy-icon:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .response-block {
+            background: #1a1b26;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .response-block.show {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        /* Donation Section */
+        .donation-section {
+            padding: 100px 40px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .donation-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .donation-content h2 {
+            font-size: 3em;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .donation-content p {
+            font-size: 1.2em;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .donation-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .donation-btn {
+            padding: 16px 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .donation-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-lighter);
+            padding: 60px 40px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-note {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2.5em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .code-preview {
+                margin: 30px 20px 0;
+            }
+
+            .code-content {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-lighter);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--dark-lighter);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><i class="fas fa-globe-asia"></i> Konoha Land</div>
+        <div class="nav-links">
+            <a href="#docs">Documentation</a>
+            <a href="#playground">Playground</a>
+            <a href="https://github.com/leonurium/konoland-api" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Indonesian Region API<br>Made Simple</h1>
+            <p class="subtitle">Free, fast, and comprehensive API for Indonesian administrative data</p>
+            
+            <div class="badge-group">
+                <span class="badge"><i class="fas fa-gift"></i> 100% Free</span>
+                <span class="badge"><i class="fas fa-bolt"></i> Sub-100ms Response</span>
+                <span class="badge"><i class="fas fa-chart-bar"></i> 80K+ Data Points</span>
+                <span class="badge"><i class="fas fa-sync-alt"></i> Always Updated</span>
+            </div>
+
+            <div class="cta-group">
+                <a href="#playground" class="btn btn-primary">
+                    Try API Now <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://github.com/leonurium/konoland-api" target="_blank" class="btn btn-secondary">
+                    View on GitHub
+                </a>
+            </div>
+
+            <!-- Code Preview -->
+            <div class="code-preview">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <span class="code-title">GET /province?limit=5</span>
+                </div>
+                <div class="code-content">
+                    <div class="code-line">
+                        <span class="line-number">1</span>
+                        <span><span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">'https://konoland-api.vercel.app/province?limit=5'</span>);</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">2</span>
+                        <span><span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">3</span>
+                        <span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">4</span>
+                        <span><span class="comment">// Returns:</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">5</span>
+                        <span>{</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">6</span>
+                        <span>  <span class="property">"data_header"</span>: {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">7</span>
+                        <span>    <span class="property">"status"</span>: <span class="string">"OK"</span>,</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">8</span>
+                        <span>    <span class="property">"message"</span>: <span class="string">"Success"</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">9</span>
+                        <span>  },</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">10</span>
+                        <span>  <span class="property">"data_body"</span>: { ... }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">11</span>
+                        <span>}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">34</div>
+                    <div class="stat-label">Provinces</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">514</div>
+                    <div class="stat-label">Regencies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7.3K</div>
+                    <div class="stat-label">Districts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">83K</div>
+                    <div class="stat-label">Villages</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="section-header">
+                <h2>Why Choose Konoha Land API?</h2>
+                <p>Built for developers, by developers. Everything you need to integrate Indonesian regional data.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon"><i class="fas fa-bolt"></i></span>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized queries and global CDN ensure sub-100ms response times worldwide.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon"><i class="fas fa-lock-open"></i></span>
+                    <h3>No Authentication</h3>
+                    <p>Start building immediately. No API keys, no rate limits, no signup required.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon"><i class="fas fa-database"></i></span>
+                    <h3>Complete Dataset</h3>
+                    <p>All 34 provinces, 514 regencies, 7,276 districts, and 83,762 villages included.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon"><i class="fas fa-filter"></i></span>
+                    <h3>Advanced Filtering</h3>
+                    <p>Search, sort, filter, and paginate with powerful query parameters.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon"><i class="fas fa-history"></i></span>
+                    <h3>Backward Compatible</h3>
+                    <p>Drop-in replacement for legacy APIs. Your existing code will work.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon"><i class="fab fa-github"></i></span>
+                    <h3>Open Source</h3>
+                    <p>Fully open source. Fork it, modify it, deploy your own instance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Playground -->
+        <section class="playground-section" id="playground">
+            <div class="section-header">
+                <h2>Try It Live</h2>
+                <p>Test API endpoints directly in your browser. No setup required.</p>
+            </div>
+
+            <div class="api-playground">
+                <div class="playground-header">
+                    <div class="endpoint-tabs">
+                        <button class="endpoint-tab active" onclick="selectEndpoint('provinces')">Provinces</button>
+                        <button class="endpoint-tab" onclick="selectEndpoint('regencies')">Regencies</button>
+                        <button class="endpoint-tab" onclick="selectEndpoint('districts')">Districts</button>
+                        <button class="endpoint-tab" onclick="selectEndpoint('villages')">Villages</button>
+                    </div>
+                </div>
+                
+                <div class="playground-content">
+                    <div id="endpoint-provinces" class="endpoint-content">
+                        <div class="request-block">
+                            <div class="request-label">REQUEST</div>
+                            <div class="request-url">
+                                <span class="method-badge">GET</span>
+                                <span class="url-text" id="url-provinces">https://konoland-api.vercel.app/province?limit=5&sortBy=province</span>
+                                <button class="copy-icon" onclick="copyUrl('url-provinces')"><i class="far fa-copy"></i></button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="tryEndpoint('province?limit=5&sortBy=province')">
+                            <span id="loading-provinces" style="display:none;" class="spinner"></span>
+                            <span id="text-provinces">Run Request</span>
+                        </button>
+                    </div>
+
+                    <div id="endpoint-regencies" class="endpoint-content" style="display:none;">
+                        <div class="request-block">
+                            <div class="request-label">REQUEST</div>
+                            <div class="request-url">
+                                <span class="method-badge">GET</span>
+                                <span class="url-text" id="url-regencies">https://konoland-api.vercel.app/regency?provinceCode=11&limit=5</span>
+                                <button class="copy-icon" onclick="copyUrl('url-regencies')"><i class="far fa-copy"></i></button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="tryEndpoint('regency?provinceCode=11&limit=5', 'regencies')">
+                            <span id="loading-regencies" style="display:none;" class="spinner"></span>
+                            <span id="text-regencies">Run Request</span>
+                        </button>
+                    </div>
+
+                    <div id="endpoint-districts" class="endpoint-content" style="display:none;">
+                        <div class="request-block">
+                            <div class="request-label">REQUEST</div>
+                            <div class="request-url">
+                                <span class="method-badge">GET</span>
+                                <span class="url-text" id="url-districts">https://konoland-api.vercel.app/district?regencyCode=1101&limit=5</span>
+                                <button class="copy-icon" onclick="copyUrl('url-districts')"><i class="far fa-copy"></i></button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="tryEndpoint('district?regencyCode=1101&limit=5', 'districts')">
+                            <span id="loading-districts" style="display:none;" class="spinner"></span>
+                            <span id="text-districts">Run Request</span>
+                        </button>
+                    </div>
+
+                    <div id="endpoint-villages" class="endpoint-content" style="display:none;">
+                        <div class="request-block">
+                            <div class="request-label">REQUEST</div>
+                            <div class="request-url">
+                                <span class="method-badge">GET</span>
+                                <span class="url-text" id="url-villages">https://konoland-api.vercel.app/village?districtCode=110101&limit=5</span>
+                                <button class="copy-icon" onclick="copyUrl('url-villages')"><i class="far fa-copy"></i></button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="tryEndpoint('village?districtCode=110101&limit=5', 'villages')">
+                            <span id="loading-villages" style="display:none;" class="spinner"></span>
+                            <span id="text-villages">Run Request</span>
+                        </button>
+                    </div>
+
+                    <div id="response-block" class="response-block">
+                        <pre id="response-content"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation-section">
+            <div class="donation-content">
+                <h2><i class="fas fa-coffee"></i> Support This Project</h2>
+                <p>Help keep this API free and running for everyone. Your support means the world!</p>
+                
+                <div class="donation-buttons">
+                    <a href="https://buymeacoffee.com/leonurium" target="_blank" class="donation-btn">
+                        <i class="fas fa-coffee"></i> Buy Me a Coffee
+                    </a>
+                    <a href="https://saweria.co/leonurium" target="_blank" class="donation-btn">
+                        <i class="fas fa-heart"></i> Support on Saweria
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/leonurium/konoland-api" target="_blank">GitHub</a>
+                <a href="https://github.com/leonurium/konoland-api#readme" target="_blank">Documentation</a>
+                <a href="https://github.com/leonurium/konoland-api/issues" target="_blank">Report Issues</a>
+                <a href="https://vercel.com/new/clone?repository-url=https://github.com/leonurium/konoland-api" target="_blank">Deploy Your Own</a>
+            </div>
+            
+            <div class="footer-note">
+                <p>Made with <i class="fas fa-heart" style="color: var(--accent);"></i> for the Indonesian developer community</p>
+                <p style="margin-top: 10px; opacity: 0.6;">
+                    Inspired by <a href="https://github.com/theodevoid/wilayah-nusantara" target="_blank" style="color: var(--primary);">Wilayah Nusantara API</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function selectEndpoint(endpoint) {
+            // Hide all endpoint contents
+            document.querySelectorAll('.endpoint-content').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.endpoint-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected endpoint
+            document.getElementById('endpoint-' + endpoint).style.display = 'block';
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Hide response block
+            document.getElementById('response-block').classList.remove('show');
+        }
+
+        async function tryEndpoint(endpoint, id = 'provinces') {
+            const responseBlock = document.getElementById('response-block');
+            const responseContent = document.getElementById('response-content');
+            const loadingSpinner = document.getElementById('loading-' + id);
+            const buttonText = document.getElementById('text-' + id);
+            
+            // Show loading
+            if (loadingSpinner) loadingSpinner.style.display = 'inline-block';
+            if (buttonText) buttonText.textContent = 'Loading...';
+            responseContent.textContent = 'Fetching data...';
+            responseBlock.classList.add('show');
+            
+            try {
+                const response = await fetch('https://konoland-api.vercel.app/' + endpoint);
+                const data = await response.json();
+                responseContent.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseContent.textContent = 'Error: ' + error.message;
+            } finally {
+                if (loadingSpinner) loadingSpinner.style.display = 'none';
+                if (buttonText) buttonText.textContent = 'Run Request';
+            }
+        }
+
+        function copyUrl(elementId) {
+            const url = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(url).then(() => {
+                const btn = event.target;
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                }, 2000);
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
