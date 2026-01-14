@@ -12,7 +12,7 @@ export class RegencyService {
   ) {}
 
   async getRegencies(getRegenciesQuery: GetRegenciesDTO) {
-    const { limit = 10, page = 1, name, code, provinceCode, sortBy, sortDirection = 'ASC' } = getRegenciesQuery;
+    const { limit = 10, page = 1, name, code, provinceCode, provinsiCode, sortBy, sortDirection = 'ASC' } = getRegenciesQuery;
 
     // If code is provided, return the entity directly (backward compatibility)
     if (code) {
@@ -26,8 +26,10 @@ export class RegencyService {
     if (name) {
       where.regency = Like(`%${name}%`);
     }
-    if (provinceCode) {
-      where.provinceCode = provinceCode;
+    // Support both provinceCode and legacy provinsiCode alias
+    const effectiveProvinceCode = provinceCode || provinsiCode;
+    if (effectiveProvinceCode) {
+      where.provinceCode = effectiveProvinceCode;
     }
 
     // Define allowed sort fields to prevent SQL injection

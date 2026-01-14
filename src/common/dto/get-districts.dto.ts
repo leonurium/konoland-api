@@ -13,5 +13,10 @@ export class GetDistrictsDTO extends PaginationDTO {
   @IsOptional()
   @IsString()
   regencyCode?: string;
+
+  // Legacy alias for backward compatibility with wilayah-nusantara
+  @IsOptional()
+  @IsString()
+  kabkotCode?: string;
 }
 

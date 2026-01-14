@@ -13,5 +13,10 @@ export class GetVillagesDTO extends PaginationDTO {
   @IsOptional()
   @IsString()
   districtCode?: string;
+
+  // Legacy alias for backward compatibility with wilayah-nusantara
+  @IsOptional()
+  @IsString()
+  kecamatanCode?: string;
 }
 

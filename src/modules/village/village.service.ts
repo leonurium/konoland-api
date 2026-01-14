@@ -12,7 +12,7 @@ export class VillageService {
   ) {}
 
   async getVillages(getVillagesQuery: GetVillagesDTO) {
-    const { limit = 10, page = 1, name, code, districtCode, sortBy, sortDirection = 'ASC' } = getVillagesQuery;
+    const { limit = 10, page = 1, name, code, districtCode, kecamatanCode, sortBy, sortDirection = 'ASC' } = getVillagesQuery;
 
     // If code is provided, return the entity directly (backward compatibility)
     if (code) {
@@ -26,8 +26,10 @@ export class VillageService {
     if (name) {
       where.village = Like(`%${name}%`);
     }
-    if (districtCode) {
-      where.districtCode = districtCode;
+    // Support both districtCode and legacy kecamatanCode alias
+    const effectiveDistrictCode = districtCode || kecamatanCode;
+    if (effectiveDistrictCode) {
+      where.districtCode = effectiveDistrictCode;
     }
 
     // Define allowed sort fields to prevent SQL injection

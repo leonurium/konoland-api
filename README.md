@@ -58,19 +58,31 @@ curl https://konoland-api.vercel.app/province?name=Jawa
 
 ## 📡 API Endpoints
 
-All endpoints return data in this format:
+### Response Format
 
+**List endpoints** (paginated) return:
 ```json
 {
-  "data_header": {
-    "status": "OK",
-    "message": "Success",
-    "time_stamp": "2024-01-01T00:00:00.000Z",
-    "trace_code": "uuid"
-  },
-  "data_body": {
-    // Your data here
+  "data": [
+    {
+      "code": "11",
+      "province": "Aceh"
+    },
+    ...
+  ],
+  "meta": {
+    "limit": 10,
+    "page": 1,
+    "total": 37
   }
+}
+```
+
+**Detail endpoints** (by code) return the entity directly:
+```json
+{
+  "code": "11",
+  "province": "Aceh"
 }
 ```
 
@@ -99,6 +111,29 @@ All list endpoints support:
 - `provinceCode` - Filter by parent province
 - `regencyCode` - Filter by parent regency
 - `districtCode` - Filter by parent district
+
+#### Legacy Aliases (Backward Compatibility)
+
+For compatibility with [wilayah-nusantara API](https://github.com/theodevoid/wilayah-nusantara), the following legacy parameter names are also supported:
+
+| Legacy Parameter | Current Parameter | Endpoint |
+|-----------------|-------------------|----------|
+| `provinsiCode` | `provinceCode` | `/regency` |
+| `kabkotCode` | `regencyCode` | `/district` |
+| `kecamatanCode` | `districtCode` | `/village` |
+
+**Example:**
+```bash
+# Both work the same way:
+GET /regency?provinceCode=11    # Current API
+GET /regency?provinsiCode=11    # Legacy (wilayah-nusantara)
+
+GET /district?regencyCode=1101  # Current API
+GET /district?kabkotCode=1101   # Legacy (wilayah-nusantara)
+
+GET /village?districtCode=110101   # Current API
+GET /village?kecamatanCode=110101  # Legacy (wilayah-nusantara)
+```
 
 #### Sorting Options
 
@@ -293,6 +328,11 @@ Existing applications can switch to this API without any code changes!
    - Click Deploy
 
 3. **Your API is live!** 🎉
+
+## 📋 TODO / Roadmap
+
+- [ ] **Update Data to 2025** - Update administrative region data with the latest 2025 data from Kemendagri (Kementerian Dalam Negeri)
+- [ ] Add caching layer for improved performance
 
 ## 🤝 Contributing
 

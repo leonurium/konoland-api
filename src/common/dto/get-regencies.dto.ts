@@ -13,5 +13,10 @@ export class GetRegenciesDTO extends PaginationDTO {
   @IsOptional()
   @IsString()
   provinceCode?: string;
+
+  // Legacy alias for backward compatibility with wilayah-nusantara
+  @IsOptional()
+  @IsString()
+  provinsiCode?: string;
 }
 

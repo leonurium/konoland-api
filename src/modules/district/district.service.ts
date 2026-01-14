@@ -12,7 +12,7 @@ export class DistrictService {
   ) {}
 
   async getDistricts(getDistrictsQuery: GetDistrictsDTO) {
-    const { limit = 10, page = 1, name, code, regencyCode, sortBy, sortDirection = 'ASC' } = getDistrictsQuery;
+    const { limit = 10, page = 1, name, code, regencyCode, kabkotCode, sortBy, sortDirection = 'ASC' } = getDistrictsQuery;
 
     // If code is provided, return the entity directly (backward compatibility)
     if (code) {
@@ -26,8 +26,10 @@ export class DistrictService {
     if (name) {
       where.district = Like(`%${name}%`);
     }
-    if (regencyCode) {
-      where.regencyCode = regencyCode;
+    // Support both regencyCode and legacy kabkotCode alias
+    const effectiveRegencyCode = regencyCode || kabkotCode;
+    if (effectiveRegencyCode) {
+      where.regencyCode = effectiveRegencyCode;
     }
 
     // Define allowed sort fields to prevent SQL injection
