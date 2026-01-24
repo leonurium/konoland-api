@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌏 Konoha Land API - Free Indonesian Administrative Regions API</title>
     <meta name="description" content="Free, open-source REST API providing comprehensive data about Indonesian administrative regions (Provinces, Regencies, Districts, and Villages)">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌏</text></svg>">
+    <link rel="alternate icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAClklEQVR4nO2WS0hUYRiGn3POzIwzY+M4XtJxHDUTb2lqmZUGQRctErKFZYugTYugC0HQpkURQYu6QAstIroQUQRBi1oEFQVlZi4qSrxE6qjjZTRn5vQ1/zDHGWfG0UX0wnfO+c//ne/5vv/7/g8MMMAAASP/ewBFURS1Wq1GKisrI4ODg8OTk5MjExMTkfHx8cj4+PjI2NjYSHFxcUSlUqmBgJGRkdChoaFwKBQKh0Kh8NDQUDgYDIaDwWA4EAiEfT5f2Ofzhb1ebzgQCIQBf1dX1wCLxaLKyMjQeL1ehUIhk0ajkRUWFsq8Xq+st7dX5vF4ZC6XS9bV1SVzOByyjo4Ome+fv127do3t8PDwGHV1dTqv16tQq9Xy8vJyhcPhUDgcDoXT6VQ4HA6F3W5X2O12hc1mU9hsNoXVarVYLBaL2Wy22Gw2i9VqtZhMJovRaLRUVlZabDabBfgI3ARauru7A8DbgoIChdFoVLS2tipEm0SdnZ2Kzs5ORXt7u6KtrU3R0tKiaGpqUjQ2NioaGhoU9fX1ivr6ekV1dbWipqZGAXwE7gH1gA54DbwDbM7OzmDqV+Xn5ysyMzMVeXl5iuzsbEV2draioKBAkZWVpcjMzFRkZGQo0tPTFWlpaYrk5GRFUlKSIjExUZGQkKCIj49XxMXFKaKjoxWRkZGK8PBwhclkMgDPgQfAAeAt0AJ0A++AAKA3m82GlJQUg8lkMiQmJhpSU1MNqamphoKCAsOSJUsMubm5hsWLFxuysrIMRqPREBMTY1ixYoUhPDzckJiYaAC+AteBLUAd8ApoAnYCT4B7wEngMHAHuA3sAW4Be4GrwBngKHAKuAzsBO4AO4BmYBuwHrgAXAJ2AXuBPcBl4BJwAXgOhIBv/5cBBhhggP/gB3Q6z+SIzQMXAAAAAElFTkSuQmCC">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -527,6 +532,79 @@
             animation: fadeIn 0.3s;
         }
 
+        /* Branding Section */
+        .branding-section {
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(99, 102, 241, 0.05));
+        }
+
+        .branding-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .branding-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .branding-content h3 {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .brand-name {
+            background: linear-gradient(135deg, #a78bfa, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            font-size: 1.2em;
+            letter-spacing: 0.05em;
+            position: relative;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .brand-name:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.2);
+        }
+
+        .brand-tagline {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            margin: 15px 0;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .brand-tagline i {
+            color: var(--primary);
+            margin: 0 8px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.95em;
+            color: var(--text-muted);
+            opacity: 0.6;
+            margin-top: 10px;
+        }
+
         /* Donation Section */
         .donation-section {
             padding: 100px 40px;
@@ -743,7 +821,8 @@
                 <span class="badge"><i class="fas fa-gift"></i> 100% Free</span>
                 <span class="badge"><i class="fas fa-bolt"></i> Sub-100ms Response</span>
                 <span class="badge"><i class="fas fa-chart-bar"></i> 80K+ Data Points</span>
-                <span class="badge"><i class="fas fa-sync-alt"></i> Always Updated</span>
+                <span class="badge"><i class="fas fa-calendar-alt"></i> 2025 Data</span>
+                <span class="badge"><i class="fas fa-envelope"></i> 100% Postal Codes</span>
             </div>
 
             <div class="cta-group">
@@ -818,7 +897,7 @@
         <section class="stats-section">
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">34</div>
+                    <div class="stat-number">38</div>
                     <div class="stat-label">Provinces</div>
                 </div>
                 <div class="stat-card">
@@ -830,7 +909,7 @@
                     <div class="stat-label">Districts</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">83K</div>
+                    <div class="stat-number">84K</div>
                     <div class="stat-label">Villages</div>
                 </div>
             </div>
@@ -859,13 +938,13 @@
                 <div class="feature-card">
                     <span class="feature-icon"><i class="fas fa-database"></i></span>
                     <h3>Complete Dataset</h3>
-                    <p>All 34 provinces, 514 regencies, 7,276 districts, and 83,762 villages included.</p>
+                    <p>2025 data: 38 provinces, 514 regencies, 7,285 districts, 83,762 villages with 100% postal code coverage.</p>
                 </div>
                 
                 <div class="feature-card">
                     <span class="feature-icon"><i class="fas fa-filter"></i></span>
-                    <h3>Advanced Filtering</h3>
-                    <p>Search, sort, filter, and paginate with powerful query parameters.</p>
+                    <h3>Advanced Features</h3>
+                    <p>Search, sort, filter, and paginate. Includes sortBy & sortDirection parameters for custom ordering.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -971,6 +1050,21 @@
             </div>
         </section>
 
+        <!-- Branding Section -->
+        <section class="branding-section">
+            <div class="branding-content">
+                <div class="branding-icon">
+                    <i class="fas fa-meteor"></i>
+                </div>
+                <h3>Built by <a href="https://leonurium.com" target="_blank" class="brand-name">leonurium</a></h3>
+                <p class="brand-tagline">
+                    <i class="fas fa-gem"></i> The unbreakable stone of earth, floating through the cosmos
+                    <i class="fas fa-rocket"></i>
+                </p>
+                <p class="brand-subtitle">Crafting tools for developers, one API at a time</p>
+            </div>
+        </section>
+
         <!-- Donation Section -->
         <section class="donation-section">
             <div class="donation-content">
@@ -1000,8 +1094,9 @@
             </div>
             
             <div class="footer-note">
-                <p>Made with <i class="fas fa-heart" style="color: var(--accent);"></i> for the Indonesian developer community</p>
+                <p>Made with <i class="fas fa-heart" style="color: var(--accent);"></i> for the Indonesian developer community by <a href="https://leonurium.com" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;"><strong>leonurium</strong></a></p>
                 <p style="margin-top: 10px; opacity: 0.6;">
+                    <i class="fas fa-meteor" style="font-size: 0.9em; margin-right: 5px;"></i>
                     Inspired by <a href="https://github.com/theodevoid/wilayah-nusantara" target="_blank" style="color: var(--primary);">Wilayah Nusantara API</a>
                 </p>
             </div>
