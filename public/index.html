@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌏 Konoha Land API - Free Indonesian Administrative Regions API</title>
+    <title>Konoha Land API - Free Indonesian Administrative Regions API</title>
     <meta name="description" content="Free, open-source REST API providing comprehensive data about Indonesian administrative regions (Provinces, Regencies, Districts, and Villages)">
     
     <!-- Favicon -->
@@ -111,13 +111,25 @@
 
         /* Hero Section */
         .hero {
-            padding: 120px 40px;
-            text-align: center;
+            padding: 80px 40px;
             position: relative;
         }
 
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
         .hero h1 {
-            font-size: 5em;
+            font-size: 4em;
             font-weight: 900;
             letter-spacing: -0.02em;
             margin-bottom: 20px;
@@ -129,7 +141,7 @@
         }
 
         .hero .subtitle {
-            font-size: 1.5em;
+            font-size: 1.3em;
             color: var(--text-muted);
             margin-bottom: 40px;
             font-weight: 400;
@@ -137,18 +149,18 @@
 
         .badge-group {
             display: flex;
-            gap: 15px;
-            justify-content: center;
+            gap: 12px;
+            justify-content: flex-start;
             margin: 40px 0;
             flex-wrap: wrap;
         }
 
         .badge {
-            padding: 10px 20px;
+            padding: 8px 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             font-weight: 500;
             backdrop-filter: blur(10px);
             transition: all 0.3s;
@@ -162,9 +174,9 @@
 
         .cta-group {
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 50px;
+            gap: 15px;
+            justify-content: flex-start;
+            margin-top: 40px;
         }
 
         .btn {
@@ -203,73 +215,243 @@
             border-color: var(--primary);
         }
 
-        /* Code Preview */
-        .code-preview {
-            max-width: 900px;
-            margin: 60px auto 0;
-            background: var(--dark-light);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .code-header {
+        /* iPhone Mockup */
+        .iphone-mockup {
+            position: relative;
             display: flex;
+            justify-content: center;
             align-items: center;
-            padding: 15px 20px;
-            background: var(--dark-lighter);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .code-dots {
-            display: flex;
-            gap: 8px;
+        .iphone-frame {
+            width: 375px;
+            height: 760px;
+            background: #1a1a1a;
+            border-radius: 50px;
+            padding: 12px;
+            box-shadow: 
+                0 0 0 12px #2a2a2a,
+                0 0 0 14px #1a1a1a,
+                0 30px 80px rgba(0, 0, 0, 0.8);
+            position: relative;
+            /* animation: float 6s ease-in-out infinite; */
         }
 
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
-        .dot:nth-child(1) { background: #ff5f56; }
-        .dot:nth-child(2) { background: #ffbd2e; }
-        .dot:nth-child(3) { background: #27c93f; }
-
-        .code-title {
-            margin-left: 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9em;
-            color: var(--text-muted);
+        .iphone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: #1a1a1a;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
         }
 
-        .code-content {
-            padding: 30px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95em;
-            line-height: 1.8;
-            color: var(--text);
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 40px;
+            overflow: hidden;
             position: relative;
         }
 
-        .code-line {
+        /* Delivery App UI */
+        .app-header {
+            padding: 50px 20px 20px;
+            background: var(--dark-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app-header-top {
             display: flex;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2em;
         }
 
-        .line-number {
+        .app-title {
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+
+        .app-content {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(760px - 100px);
+        }
+
+        .delivery-card {
+            background: var(--dark-light);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .delivery-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .delivery-card h3 {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .delivery-card > p {
+            font-size: 0.85em;
             color: var(--text-muted);
-            user-select: none;
-            min-width: 30px;
-            text-align: right;
+            margin-bottom: 20px;
         }
 
-        .keyword { color: #c792ea; }
-        .string { color: #c3e88d; }
-        .function { color: #82aaff; }
-        .comment { color: var(--text-muted); font-style: italic; }
-        .property { color: #f07178; }
+        /* Address Form */
+        .address-form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-group label i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .demo-select {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--dark-lighter);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 0.9em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        .demo-select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .demo-select:not(:disabled):hover {
+            border-color: var(--primary);
+            background: var(--dark);
+        }
+
+        .demo-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .loading-indicator {
+            position: absolute;
+            right: 40px;
+            top: 36px;
+        }
+
+        .mini-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .postal-code-display {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin: 15px 0;
+            font-size: 0.9em;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .postal-code-display i {
+            color: var(--primary);
+        }
+
+        .demo-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .demo-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .demo-btn:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .api-badge {
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.75em;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .api-badge i {
+            color: var(--primary);
+        }
 
         /* Stats Section */
         .stats-section {
@@ -728,13 +910,44 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .badge-group {
+                justify-content: center;
+            }
+
+            .cta-group {
+                justify-content: center;
+            }
+
+            .iphone-mockup {
+                order: -1;
+            }
+
+            .iphone-frame {
+                transform: scale(0.9);
+            }
+        }
+
         @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
             .hero h1 {
-                font-size: 3em;
+                font-size: 2.5em;
             }
 
             .hero .subtitle {
-                font-size: 1.2em;
+                font-size: 1.1em;
             }
 
             nav {
@@ -755,14 +968,16 @@
 
             .cta-group {
                 flex-direction: column;
+                align-items: stretch;
             }
 
-            .code-preview {
-                margin: 30px 20px 0;
+            .iphone-frame {
+                transform: scale(0.85);
             }
 
-            .code-content {
+            .badge {
                 font-size: 0.8em;
+                padding: 6px 12px;
             }
         }
 
@@ -814,80 +1029,108 @@
     <div class="container">
         <!-- Hero Section -->
         <section class="hero">
-            <h1>Indonesian Region API<br>Made Simple</h1>
-            <p class="subtitle">Free, fast, and comprehensive API for Indonesian administrative data</p>
-            
-            <div class="badge-group">
-                <span class="badge"><i class="fas fa-gift"></i> 100% Free</span>
-                <span class="badge"><i class="fas fa-bolt"></i> Sub-100ms Response</span>
-                <span class="badge"><i class="fas fa-chart-bar"></i> 80K+ Data Points</span>
-                <span class="badge"><i class="fas fa-calendar-alt"></i> 2025 Data</span>
-                <span class="badge"><i class="fas fa-envelope"></i> 100% Postal Codes</span>
-            </div>
-
-            <div class="cta-group">
-                <a href="#playground" class="btn btn-primary">
-                    Try API Now <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="https://github.com/leonurium/konoland-api" target="_blank" class="btn btn-secondary">
-                    View on GitHub
-                </a>
-            </div>
-
-            <!-- Code Preview -->
-            <div class="code-preview">
-                <div class="code-header">
-                    <div class="code-dots">
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Indonesian Region API<br>Made Simple</h1>
+                    <p class="subtitle">Free, fast, and comprehensive API for Indonesian administrative data</p>
+                    
+                    <div class="badge-group">
+                        <span class="badge"><i class="fas fa-gift"></i> 100% Free</span>
+                        <span class="badge"><i class="fas fa-bolt"></i> Sub-100ms</span>
+                        <span class="badge"><i class="fas fa-database"></i> 84K+ Data</span>
+                        <span class="badge"><i class="fas fa-calendar-alt"></i> 2025 Data</span>
                     </div>
-                    <span class="code-title">GET /province?limit=5</span>
+
+                    <div class="cta-group">
+                        <a href="#playground" class="btn btn-primary">
+                            Try API Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://github.com/leonurium/konoland-api" target="_blank" class="btn btn-secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
                 </div>
-                <div class="code-content">
-                    <div class="code-line">
-                        <span class="line-number">1</span>
-                        <span><span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">'https://konoland-api.vercel.app/province?limit=5'</span>);</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">2</span>
-                        <span><span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">3</span>
-                        <span></span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">4</span>
-                        <span><span class="comment">// Returns:</span></span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">5</span>
-                        <span>{</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">6</span>
-                        <span>  <span class="property">"data_header"</span>: {</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">7</span>
-                        <span>    <span class="property">"status"</span>: <span class="string">"OK"</span>,</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">8</span>
-                        <span>    <span class="property">"message"</span>: <span class="string">"Success"</span></span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">9</span>
-                        <span>  },</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">10</span>
-                        <span>  <span class="property">"data_body"</span>: { ... }</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">11</span>
-                        <span>}</span>
+
+                <!-- iPhone Mockup with Delivery App -->
+                <div class="iphone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-notch"></div>
+                        <div class="iphone-screen">
+                            <!-- Delivery App Interface -->
+                            <div class="app-header">
+                                <div class="app-header-top">
+                                    <i class="fas fa-bars"></i>
+                                    <span class="app-title">Demo App</span>
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                            </div>
+
+                            <div class="app-content">
+                                <div class="delivery-card">
+                                    <div class="delivery-icon">
+                                        <i class="fas fa-shipping-fast"></i>
+                                    </div>
+                                    <h3>Where to deliver?</h3>
+                                    <p>Select your delivery destination</p>
+
+                                    <!-- Address Form -->
+                                    <div class="address-form">
+                                        <div class="form-group">
+                                            <label><i class="fas fa-map-marked-alt"></i> Province</label>
+                                            <select id="demo-province" class="demo-select">
+                                                <option value="">Select Province...</option>
+                                            </select>
+                                            <div class="loading-indicator" id="province-loading" style="display: none;">
+                                                <div class="mini-spinner"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label><i class="fas fa-city"></i> City / Regency</label>
+                                            <select id="demo-regency" class="demo-select" disabled>
+                                                <option value="">Select Regency...</option>
+                                            </select>
+                                            <div class="loading-indicator" id="regency-loading" style="display: none;">
+                                                <div class="mini-spinner"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label><i class="fas fa-map-marker-alt"></i> District</label>
+                                            <select id="demo-district" class="demo-select" disabled>
+                                                <option value="">Select District...</option>
+                                            </select>
+                                            <div class="loading-indicator" id="district-loading" style="display: none;">
+                                                <div class="mini-spinner"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label><i class="fas fa-home"></i> Village</label>
+                                            <select id="demo-village" class="demo-select" disabled>
+                                                <option value="">Select Village...</option>
+                                            </select>
+                                            <div class="loading-indicator" id="village-loading" style="display: none;">
+                                                <div class="mini-spinner"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="postal-code-display" id="postal-code-display" style="display: none;">
+                                            <i class="fas fa-envelope"></i>
+                                            <span>Postal Code: <strong id="postal-code-value">-</strong></span>
+                                        </div>
+
+                                        <button class="demo-btn" id="demo-proceed-btn" disabled>
+                                            <i class="fas fa-check-circle"></i> Proceed to Delivery
+                                        </button>
+                                    </div>
+
+                                    <div class="api-badge">
+                                        <i class="fas fa-bolt"></i> Powered by Konoha Land API
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1104,6 +1347,176 @@
     </footer>
 
     <script>
+        // Demo App - Load Provinces on page load
+        async function loadDemoProvinces() {
+            const select = document.getElementById('demo-province');
+            const loading = document.getElementById('province-loading');
+            
+            loading.style.display = 'block';
+            
+            try {
+                const response = await fetch('https://konoland-api.vercel.app/province?limit=100&sortBy=province');
+                const data = await response.json();
+                
+                if (data.data && data.data.length > 0) {
+                    select.innerHTML = '<option value="">Select Province...</option>';
+                    data.data.forEach(province => {
+                        const option = document.createElement('option');
+                        option.value = province.code;
+                        option.textContent = province.province;
+                        option.dataset.name = province.province;
+                        select.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading provinces:', error);
+                select.innerHTML = '<option value="">Error loading provinces</option>';
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        // Demo App - Province change handler
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDemoProvinces();
+
+            const provinceSelect = document.getElementById('demo-province');
+            const regencySelect = document.getElementById('demo-regency');
+            const districtSelect = document.getElementById('demo-district');
+            const villageSelect = document.getElementById('demo-village');
+            const proceedBtn = document.getElementById('demo-proceed-btn');
+            const postalDisplay = document.getElementById('postal-code-display');
+            const postalValue = document.getElementById('postal-code-value');
+
+            provinceSelect.addEventListener('change', async (e) => {
+                const provinceCode = e.target.value;
+                
+                // Reset dependent selects
+                regencySelect.innerHTML = '<option value="">Select Regency...</option>';
+                regencySelect.disabled = !provinceCode;
+                districtSelect.innerHTML = '<option value="">Select District...</option>';
+                districtSelect.disabled = true;
+                villageSelect.innerHTML = '<option value="">Select Village...</option>';
+                villageSelect.disabled = true;
+                proceedBtn.disabled = true;
+                postalDisplay.style.display = 'none';
+
+                if (!provinceCode) return;
+
+                const loading = document.getElementById('regency-loading');
+                loading.style.display = 'block';
+
+                try {
+                    const response = await fetch(`https://konoland-api.vercel.app/regency?provinceCode=${provinceCode}&limit=200&sortBy=regency`);
+                    const data = await response.json();
+                    
+                    if (data.data && data.data.length > 0) {
+                        data.data.forEach(regency => {
+                            const option = document.createElement('option');
+                            option.value = regency.code;
+                            option.textContent = `${regency.regency} (${regency.type})`;
+                            regencySelect.appendChild(option);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading regencies:', error);
+                } finally {
+                    loading.style.display = 'none';
+                }
+            });
+
+            regencySelect.addEventListener('change', async (e) => {
+                const regencyCode = e.target.value;
+                
+                districtSelect.innerHTML = '<option value="">Select District...</option>';
+                districtSelect.disabled = !regencyCode;
+                villageSelect.innerHTML = '<option value="">Select Village...</option>';
+                villageSelect.disabled = true;
+                proceedBtn.disabled = true;
+                postalDisplay.style.display = 'none';
+
+                if (!regencyCode) return;
+
+                const loading = document.getElementById('district-loading');
+                loading.style.display = 'block';
+
+                try {
+                    const response = await fetch(`https://konoland-api.vercel.app/district?regencyCode=${regencyCode}&limit=200&sortBy=district`);
+                    const data = await response.json();
+                    
+                    if (data.data && data.data.length > 0) {
+                        data.data.forEach(district => {
+                            const option = document.createElement('option');
+                            option.value = district.code;
+                            option.textContent = district.district;
+                            districtSelect.appendChild(option);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading districts:', error);
+                } finally {
+                    loading.style.display = 'none';
+                }
+            });
+
+            districtSelect.addEventListener('change', async (e) => {
+                const districtCode = e.target.value;
+                
+                villageSelect.innerHTML = '<option value="">Select Village...</option>';
+                villageSelect.disabled = !districtCode;
+                proceedBtn.disabled = true;
+                postalDisplay.style.display = 'none';
+
+                if (!districtCode) return;
+
+                const loading = document.getElementById('village-loading');
+                loading.style.display = 'block';
+
+                try {
+                    const response = await fetch(`https://konoland-api.vercel.app/village?districtCode=${districtCode}&limit=500&sortBy=village`);
+                    const data = await response.json();
+                    
+                    if (data.data && data.data.length > 0) {
+                        data.data.forEach(village => {
+                            const option = document.createElement('option');
+                            option.value = village.code;
+                            option.textContent = village.village;
+                            option.dataset.postalCode = village.postalCode;
+                            villageSelect.appendChild(option);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading villages:', error);
+                } finally {
+                    loading.style.display = 'none';
+                }
+            });
+
+            villageSelect.addEventListener('change', (e) => {
+                const selectedOption = e.target.options[e.target.selectedIndex];
+                const postalCode = selectedOption.dataset.postalCode;
+
+                if (postalCode && e.target.value) {
+                    postalValue.textContent = postalCode;
+                    postalDisplay.style.display = 'flex';
+                    proceedBtn.disabled = false;
+                } else {
+                    postalDisplay.style.display = 'none';
+                    proceedBtn.disabled = true;
+                }
+            });
+
+            proceedBtn.addEventListener('click', () => {
+                const province = provinceSelect.options[provinceSelect.selectedIndex].dataset.name;
+                const regency = regencySelect.options[regencySelect.selectedIndex].text;
+                const district = districtSelect.options[districtSelect.selectedIndex].text;
+                const village = villageSelect.options[villageSelect.selectedIndex].text;
+                const postal = postalValue.textContent;
+
+                alert(`✅ Delivery Address Selected!\n\n${village}\n${district}\n${regency}\n${province}\n\nPostal Code: ${postal}\n\nPowered by Konoha Land API 🚀`);
+            });
+        });
+
         function selectEndpoint(endpoint) {
             // Hide all endpoint contents
             document.querySelectorAll('.endpoint-content').forEach(el => {
