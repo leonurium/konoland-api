@@ -1,0 +1,515 @@
+code,province_code,regency,type
+1101,11,Aceh Selatan,Kabupaten
+1102,11,Aceh Tenggara,Kabupaten
+1103,11,Aceh Timur,Kabupaten
+1104,11,Aceh Tengah,Kabupaten
+1105,11,Aceh Barat,Kabupaten
+1106,11,Aceh Besar,Kabupaten
+1107,11,Pidie,Kabupaten
+1108,11,Aceh Utara,Kabupaten
+1109,11,Simeulue,Kabupaten
+1110,11,Aceh Singkil,Kabupaten
+1111,11,Bireuen,Kabupaten
+1112,11,Aceh Barat Daya,Kabupaten
+1113,11,Gayo Lues,Kabupaten
+1114,11,Aceh Jaya,Kabupaten
+1115,11,Nagan Raya,Kabupaten
+1116,11,Aceh Tamiang,Kabupaten
+1117,11,Bener Meriah,Kabupaten
+1118,11,Pidie Jaya,Kabupaten
+1171,11,Banda Aceh,Kota
+1172,11,Sabang,Kota
+1173,11,Lhokseumawe,Kota
+1174,11,Langsa,Kota
+1175,11,Subulussalam,Kota
+1201,12,Tapanuli Tengah,Kabupaten
+1202,12,Tapanuli Utara,Kabupaten
+1203,12,Tapanuli Selatan,Kabupaten
+1204,12,Nias,Kabupaten
+1205,12,Langkat,Kabupaten
+1206,12,Karo,Kabupaten
+1207,12,Deli Serdang,Kabupaten
+1208,12,Simalungun,Kabupaten
+1209,12,Asahan,Kabupaten
+1210,12,Labuhanbatu,Kabupaten
+1211,12,Dairi,Kabupaten
+1212,12,Toba,Kabupaten
+1213,12,Mandailing Natal,Kabupaten
+1214,12,Nias Selatan,Kabupaten
+1215,12,Pakpak Bharat,Kabupaten
+1216,12,Humbang Hasundutan,Kabupaten
+1217,12,Samosir,Kabupaten
+1218,12,Serdang Bedagai,Kabupaten
+1219,12,Batu Bara,Kabupaten
+1220,12,Padang Lawas Utara,Kabupaten
+1221,12,Padang Lawas,Kabupaten
+1222,12,Labuhanbatu Selatan,Kabupaten
+1223,12,Labuhanbatu Utara,Kabupaten
+1224,12,Nias Utara,Kabupaten
+1225,12,Nias Barat,Kabupaten
+1271,12,Medan,Kota
+1272,12,Pematangsiantar,Kota
+1273,12,Sibolga,Kota
+1274,12,Tanjungbalai,Kota
+1275,12,Binjai,Kota
+1276,12,Tebing Tinggi,Kota
+1277,12,Padangsidimpuan,Kota
+1278,12,Gunungsitoli,Kota
+1301,13,Pesisir Selatan,Kabupaten
+1302,13,Solok,Kabupaten
+1303,13,Sijunjung,Kabupaten
+1304,13,Tanah Datar,Kabupaten
+1305,13,Padang Pariaman,Kabupaten
+1306,13,Agam,Kabupaten
+1307,13,Lima Puluh Kota,Kabupaten
+1308,13,Pasaman,Kabupaten
+1309,13,Kepulauan Mentawai,Kabupaten
+1310,13,Dharmasraya,Kabupaten
+1311,13,Solok Selatan,Kabupaten
+1312,13,Pasaman Barat,Kabupaten
+1371,13,Padang,Kota
+1372,13,Solok,Kota
+1373,13,Sawahlunto,Kota
+1374,13,Padang Panjang,Kota
+1375,13,Bukittinggi,Kota
+1376,13,Payakumbuh,Kota
+1377,13,Pariaman,Kota
+1401,14,Kampar,Kabupaten
+1402,14,Indragiri Hulu,Kabupaten
+1403,14,Bengkalis,Kabupaten
+1404,14,Indragiri Hilir,Kabupaten
+1405,14,Pelalawan,Kabupaten
+1406,14,Rokan Hulu,Kabupaten
+1407,14,Rokan Hilir,Kabupaten
+1408,14,Siak,Kabupaten
+1409,14,Kuantan Singingi,Kabupaten
+1410,14,Kepulauan Meranti,Kabupaten
+1471,14,Pekanbaru,Kota
+1472,14,Dumai,Kota
+1501,15,Kerinci,Kabupaten
+1502,15,Merangin,Kabupaten
+1503,15,Sarolangun,Kabupaten
+1504,15,Batanghari,Kabupaten
+1505,15,Muaro Jambi,Kabupaten
+1506,15,Tanjung Jabung Barat,Kabupaten
+1507,15,Tanjung Jabung Timur,Kabupaten
+1508,15,Bungo,Kabupaten
+1509,15,Tebo,Kabupaten
+1571,15,Jambi,Kota
+1572,15,Sungai Penuh,Kota
+1601,16,Ogan Komering Ulu,Kabupaten
+1602,16,Ogan Komering Ilir,Kabupaten
+1603,16,Muara Enim,Kabupaten
+1604,16,Lahat,Kabupaten
+1605,16,Musi Rawas,Kabupaten
+1606,16,Musi Banyuasin,Kabupaten
+1607,16,Banyuasin,Kabupaten
+1608,16,Ogan Komering Ulu Timur,Kabupaten
+1609,16,Ogan Komering Ulu Selatan,Kabupaten
+1610,16,Ogan Ilir,Kabupaten
+1611,16,Empat Lawang,Kabupaten
+1612,16,Penukal Abab Lematang Ilir,Kabupaten
+1613,16,Musi Rawas Utara,Kabupaten
+1671,16,Palembang,Kota
+1672,16,Pagar Alam,Kota
+1673,16,Lubuk Linggau,Kota
+1674,16,Prabumulih,Kota
+1701,17,Bengkulu Selatan,Kabupaten
+1702,17,Rejang Lebong,Kabupaten
+1703,17,Bengkulu Utara,Kabupaten
+1704,17,Kaur,Kabupaten
+1705,17,Seluma,Kabupaten
+1706,17,Mukomuko,Kabupaten
+1707,17,Lebong,Kabupaten
+1708,17,Kepahiang,Kabupaten
+1709,17,Bengkulu Tengah,Kabupaten
+1771,17,Bengkulu,Kota
+1801,18,Lampung Selatan,Kabupaten
+1802,18,Lampung Tengah,Kabupaten
+1803,18,Lampung Utara,Kabupaten
+1804,18,Lampung Barat,Kabupaten
+1805,18,Tulang Bawang,Kabupaten
+1806,18,Tanggamus,Kabupaten
+1807,18,Lampung Timur,Kabupaten
+1808,18,Way Kanan,Kabupaten
+1809,18,Pesawaran,Kabupaten
+1810,18,Pringsewu,Kabupaten
+1811,18,Mesuji,Kabupaten
+1812,18,Tulang Bawang Barat,Kabupaten
+1813,18,Pesisir Barat,Kabupaten
+1871,18,Bandar Lampung,Kota
+1872,18,Metro,Kota
+1901,19,Bangka,Kabupaten
+1902,19,Belitung,Kabupaten
+1903,19,Bangka Selatan,Kabupaten
+1904,19,Bangka Tengah,Kabupaten
+1905,19,Bangka Barat,Kabupaten
+1906,19,Belitung Timur,Kabupaten
+1971,19,Pangkal Pinang,Kota
+2101,21,Bintan,Kabupaten
+2102,21,Karimun,Kabupaten
+2103,21,Natuna,Kabupaten
+2104,21,Lingga,Kabupaten
+2105,21,Kepulauan Anambas,Kabupaten
+2171,21,Batam,Kota
+2172,21,Tanjung Pinang,Kota
+3101,31,Administrasi Kepulauan Seribu,Kabupaten
+3171,31,Administrasi Jakarta Pusat,Kota
+3172,31,Administrasi Jakarta Utara,Kota
+3173,31,Administrasi Jakarta Barat,Kota
+3174,31,Administrasi Jakarta Selatan,Kota
+3175,31,Administrasi Jakarta Timur,Kota
+3201,32,Bogor,Kabupaten
+3202,32,Sukabumi,Kabupaten
+3203,32,Cianjur,Kabupaten
+3204,32,Bandung,Kabupaten
+3205,32,Garut,Kabupaten
+3206,32,Tasikmalaya,Kabupaten
+3207,32,Ciamis,Kabupaten
+3208,32,Kuningan,Kabupaten
+3209,32,Cirebon,Kabupaten
+3210,32,Majalengka,Kabupaten
+3211,32,Sumedang,Kabupaten
+3212,32,Indramayu,Kabupaten
+3213,32,Subang,Kabupaten
+3214,32,Purwakarta,Kabupaten
+3215,32,Karawang,Kabupaten
+3216,32,Bekasi,Kabupaten
+3217,32,Bandung Barat,Kabupaten
+3218,32,Pangandaran,Kabupaten
+3271,32,Bogor,Kota
+3272,32,Sukabumi,Kota
+3273,32,Bandung,Kota
+3274,32,Cirebon,Kota
+3275,32,Bekasi,Kota
+3276,32,Depok,Kota
+3277,32,Cimahi,Kota
+3278,32,Tasikmalaya,Kota
+3279,32,Banjar,Kota
+3301,33,Cilacap,Kabupaten
+3302,33,Banyumas,Kabupaten
+3303,33,Purbalingga,Kabupaten
+3304,33,Banjarnegara,Kabupaten
+3305,33,Kebumen,Kabupaten
+3306,33,Purworejo,Kabupaten
+3307,33,Wonosobo,Kabupaten
+3308,33,Magelang,Kabupaten
+3309,33,Boyolali,Kabupaten
+3310,33,Klaten,Kabupaten
+3311,33,Sukoharjo,Kabupaten
+3312,33,Wonogiri,Kabupaten
+3313,33,Karanganyar,Kabupaten
+3314,33,Sragen,Kabupaten
+3315,33,Grobogan,Kabupaten
+3316,33,Blora,Kabupaten
+3317,33,Rembang,Kabupaten
+3318,33,Pati,Kabupaten
+3319,33,Kudus,Kabupaten
+3320,33,Jepara,Kabupaten
+3321,33,Demak,Kabupaten
+3322,33,Semarang,Kabupaten
+3323,33,Temanggung,Kabupaten
+3324,33,Kendal,Kabupaten
+3325,33,Batang,Kabupaten
+3326,33,Pekalongan,Kabupaten
+3327,33,Pemalang,Kabupaten
+3328,33,Tegal,Kabupaten
+3329,33,Brebes,Kabupaten
+3371,33,Magelang,Kota
+3372,33,Surakarta,Kota
+3373,33,Salatiga,Kota
+3374,33,Semarang,Kota
+3375,33,Pekalongan,Kota
+3376,33,Tegal,Kota
+3401,34,Kulon Progo,Kabupaten
+3402,34,Bantul,Kabupaten
+3403,34,Gunungkidul,Kabupaten
+3404,34,Sleman,Kabupaten
+3471,34,Yogyakarta,Kota
+3501,35,Pacitan,Kabupaten
+3502,35,Ponorogo,Kabupaten
+3503,35,Trenggalek,Kabupaten
+3504,35,Tulungagung,Kabupaten
+3505,35,Blitar,Kabupaten
+3506,35,Kediri,Kabupaten
+3507,35,Malang,Kabupaten
+3508,35,Lumajang,Kabupaten
+3509,35,Jember,Kabupaten
+3510,35,Banyuwangi,Kabupaten
+3511,35,Bondowoso,Kabupaten
+3512,35,Situbondo,Kabupaten
+3513,35,Probolinggo,Kabupaten
+3514,35,Pasuruan,Kabupaten
+3515,35,Sidoarjo,Kabupaten
+3516,35,Mojokerto,Kabupaten
+3517,35,Jombang,Kabupaten
+3518,35,Nganjuk,Kabupaten
+3519,35,Madiun,Kabupaten
+3520,35,Magetan,Kabupaten
+3521,35,Ngawi,Kabupaten
+3522,35,Bojonegoro,Kabupaten
+3523,35,Tuban,Kabupaten
+3524,35,Lamongan,Kabupaten
+3525,35,Gresik,Kabupaten
+3526,35,Bangkalan,Kabupaten
+3527,35,Sampang,Kabupaten
+3528,35,Pamekasan,Kabupaten
+3529,35,Sumenep,Kabupaten
+3571,35,Kediri,Kota
+3572,35,Blitar,Kota
+3573,35,Malang,Kota
+3574,35,Probolinggo,Kota
+3575,35,Pasuruan,Kota
+3576,35,Mojokerto,Kota
+3577,35,Madiun,Kota
+3578,35,Surabaya,Kota
+3579,35,Batu,Kota
+3601,36,Pandeglang,Kabupaten
+3602,36,Lebak,Kabupaten
+3603,36,Tangerang,Kabupaten
+3604,36,Serang,Kabupaten
+3671,36,Tangerang,Kota
+3672,36,Cilegon,Kota
+3673,36,Serang,Kota
+3674,36,Tangerang Selatan,Kota
+5101,51,Jembrana,Kabupaten
+5102,51,Tabanan,Kabupaten
+5103,51,Badung,Kabupaten
+5104,51,Gianyar,Kabupaten
+5105,51,Klungkung,Kabupaten
+5106,51,Bangli,Kabupaten
+5107,51,Karangasem,Kabupaten
+5108,51,Buleleng,Kabupaten
+5171,51,Denpasar,Kota
+5201,52,Lombok Barat,Kabupaten
+5202,52,Lombok Tengah,Kabupaten
+5203,52,Lombok Timur,Kabupaten
+5204,52,Sumbawa,Kabupaten
+5205,52,Dompu,Kabupaten
+5206,52,Bima,Kabupaten
+5207,52,Sumbawa Barat,Kabupaten
+5208,52,Lombok Utara,Kabupaten
+5271,52,Mataram,Kota
+5272,52,Bima,Kota
+5301,53,Kupang,Kabupaten
+5302,53,Kab Timor Tengah Selatan,Kabupaten
+5303,53,Timor Tengah Utara,Kabupaten
+5304,53,Belu,Kabupaten
+5305,53,Alor,Kabupaten
+5306,53,Flores Timur,Kabupaten
+5307,53,Sikka,Kabupaten
+5308,53,Ende,Kabupaten
+5309,53,Ngada,Kabupaten
+5310,53,Manggarai,Kabupaten
+5311,53,Sumba Timur,Kabupaten
+5312,53,Sumba Barat,Kabupaten
+5313,53,Lembata,Kabupaten
+5314,53,Rote Ndao,Kabupaten
+5315,53,Manggarai Barat,Kabupaten
+5316,53,Nagekeo,Kabupaten
+5317,53,Sumba Tengah,Kabupaten
+5318,53,Sumba Barat Daya,Kabupaten
+5319,53,Manggarai Timur,Kabupaten
+5320,53,Sabu Raijua,Kabupaten
+5321,53,Malaka,Kabupaten
+5371,53,Kupang,Kota
+6101,61,Sambas,Kabupaten
+6102,61,Mempawah,Kabupaten
+6103,61,Sanggau,Kabupaten
+6104,61,Ketapang,Kabupaten
+6105,61,Sintang,Kabupaten
+6106,61,Kapuas Hulu,Kabupaten
+6107,61,Bengkayang,Kabupaten
+6108,61,Landak,Kabupaten
+6109,61,Sekadau,Kabupaten
+6110,61,Melawi,Kabupaten
+6111,61,Kayong Utara,Kabupaten
+6112,61,Kubu Raya,Kabupaten
+6171,61,Pontianak,Kota
+6172,61,Singkawang,Kota
+6201,62,Kotawaringin Barat,Kabupaten
+6202,62,Kotawaringin Timur,Kabupaten
+6203,62,Kapuas,Kabupaten
+6204,62,Barito Selatan,Kabupaten
+6205,62,Barito Utara,Kabupaten
+6206,62,Katingan,Kabupaten
+6207,62,Seruyan,Kabupaten
+6208,62,Sukamara,Kabupaten
+6209,62,Lamandau,Kabupaten
+6210,62,Gunung Mas,Kabupaten
+6211,62,Pulang Pisau,Kabupaten
+6212,62,Murung Raya,Kabupaten
+6213,62,Barito Timur,Kabupaten
+6271,62,Palangkaraya,Kota
+6301,63,Tanah Laut,Kabupaten
+6302,63,Kotabaru,Kabupaten
+6303,63,Banjar,Kabupaten
+6304,63,Barito Kuala,Kabupaten
+6305,63,Tapin,Kabupaten
+6306,63,Hulu Sungai Selatan,Kabupaten
+6307,63,Hulu Sungai Tengah,Kabupaten
+6308,63,Hulu Sungai Utara,Kabupaten
+6309,63,Tabalong,Kabupaten
+6310,63,Tanah Bumbu,Kabupaten
+6311,63,Balangan,Kabupaten
+6371,63,Banjarmasin,Kota
+6372,63,Banjarbaru,Kota
+6401,64,Paser,Kabupaten
+6402,64,Kutai Kartanegara,Kabupaten
+6403,64,Berau,Kabupaten
+6407,64,Kutai Barat,Kabupaten
+6408,64,Kutai Timur,Kabupaten
+6409,64,Penajam Paser Utara,Kabupaten
+6411,64,Mahakam Ulu,Kabupaten
+6471,64,Balikpapan,Kota
+6472,64,Samarinda,Kota
+6474,64,Bontang,Kota
+6501,65,Bulungan,Kabupaten
+6502,65,Malinau,Kabupaten
+6503,65,Nunukan,Kabupaten
+6504,65,Tana Tidung,Kabupaten
+6571,65,Tarakan,Kota
+7101,71,Bolaang Mongondow,Kabupaten
+7102,71,Minahasa,Kabupaten
+7103,71,Kepulauan Sangihe,Kabupaten
+7104,71,Kepulauan Talaud,Kabupaten
+7105,71,Minahasa Selatan,Kabupaten
+7106,71,Minahasa Utara,Kabupaten
+7107,71,Minahasa Tenggara,Kabupaten
+7108,71,Bolaang Mongondow Utara,Kabupaten
+7109,71,Kep. Siau Tagulandang Biaro,Kabupaten
+7110,71,Bolaang Mongondow Timur,Kabupaten
+7111,71,Bolaang Mongondow Selatan,Kabupaten
+7171,71,Manado,Kota
+7172,71,Bitung,Kota
+7173,71,Tomohon,Kota
+7174,71,Kotamobagu,Kota
+7201,72,Banggai,Kabupaten
+7202,72,Poso,Kabupaten
+7203,72,Donggala,Kabupaten
+7204,72,Toli-Toli,Kabupaten
+7205,72,Buol,Kabupaten
+7206,72,Morowali,Kabupaten
+7207,72,Banggai Kepulauan,Kabupaten
+7208,72,Parigi Moutong,Kabupaten
+7209,72,Tojo Una Una,Kabupaten
+7210,72,Sigi,Kabupaten
+7211,72,Banggai Laut,Kabupaten
+7212,72,Morowali Utara,Kabupaten
+7271,72,Palu,Kota
+7301,73,Kepulauan Selayar,Kabupaten
+7302,73,Bulukumba,Kabupaten
+7303,73,Bantaeng,Kabupaten
+7304,73,Jeneponto,Kabupaten
+7305,73,Takalar,Kabupaten
+7306,73,Gowa,Kabupaten
+7307,73,Sinjai,Kabupaten
+7308,73,Bone,Kabupaten
+7309,73,Maros,Kabupaten
+7310,73,Pangkajene dan Kepulauan,Kabupaten
+7311,73,Barru,Kabupaten
+7312,73,Soppeng,Kabupaten
+7313,73,Wajo,Kabupaten
+7314,73,Sidenreng Rappang,Kabupaten
+7315,73,Pinrang,Kabupaten
+7316,73,Enrekang,Kabupaten
+7317,73,Luwu,Kabupaten
+7318,73,Tana Toraja,Kabupaten
+7322,73,Luwu Utara,Kabupaten
+7324,73,Luwu Timur,Kabupaten
+7326,73,Toraja Utara,Kabupaten
+7371,73,Makassar,Kota
+7372,73,Parepare,Kota
+7373,73,Palopo,Kota
+7401,74,Kolaka,Kabupaten
+7402,74,Konawe,Kabupaten
+7403,74,Muna,Kabupaten
+7404,74,Buton,Kabupaten
+7405,74,Konawe Selatan,Kabupaten
+7406,74,Bombana,Kabupaten
+7407,74,Wakatobi,Kabupaten
+7408,74,Kolaka Utara,Kabupaten
+7409,74,Konawe Utara,Kabupaten
+7410,74,Buton Utara,Kabupaten
+7411,74,Kolaka Timur,Kabupaten
+7412,74,Konawe Kepulauan,Kabupaten
+7413,74,Muna Barat,Kabupaten
+7414,74,Buton Tengah,Kabupaten
+7415,74,Buton Selatan,Kabupaten
+7471,74,Kendari,Kota
+7472,74,Bau Bau,Kota
+7501,75,Gorontalo,Kabupaten
+7502,75,Boalemo,Kabupaten
+7503,75,Bone Bolango,Kabupaten
+7504,75,Pohuwato,Kabupaten
+7505,75,Gorontalo Utara,Kabupaten
+7571,75,Gorontalo,Kota
+7601,76,Pasangkayu,Kabupaten
+7602,76,Mamuju,Kabupaten
+7603,76,Mamasa,Kabupaten
+7604,76,Polewali Mandar,Kabupaten
+7605,76,Majene,Kabupaten
+7606,76,Mamuju Tengah,Kabupaten
+8101,81,Maluku Tengah,Kabupaten
+8102,81,Maluku Tenggara,Kabupaten
+8103,81,Kepulauan Tanimbar,Kabupaten
+8104,81,Buru,Kabupaten
+8105,81,Seram Bagian Timur,Kabupaten
+8106,81,Seram Bagian Barat,Kabupaten
+8107,81,Kepulauan Aru,Kabupaten
+8108,81,Maluku Barat Daya,Kabupaten
+8109,81,Buru Selatan,Kabupaten
+8171,81,Ambon,Kota
+8172,81,Tual,Kota
+8201,82,Halmahera Barat,Kabupaten
+8202,82,Halmahera Tengah,Kabupaten
+8203,82,Halmahera Utara,Kabupaten
+8204,82,Halmahera Selatan,Kabupaten
+8205,82,Kepulauan Sula,Kabupaten
+8206,82,Halmahera Timur,Kabupaten
+8207,82,Pulau Morotai,Kabupaten
+8208,82,Pulau Taliabu,Kabupaten
+8271,82,Ternate,Kota
+8272,82,Tidore Kepulauan,Kota
+9103,91,Jayapura,Kabupaten
+9105,91,Kepulauan Yapen,Kabupaten
+9106,91,Biak Numfor,Kabupaten
+9110,91,Sarmi,Kabupaten
+9111,91,Keerom,Kabupaten
+9115,91,Waropen,Kabupaten
+9119,91,Supiori,Kabupaten
+9120,91,Mamberamo Raya,Kabupaten
+9171,91,Jayapura,Kota
+9202,92,Manokwari,Kabupaten
+9203,92,Fak Fak,Kabupaten
+9206,92,Teluk Bintuni,Kabupaten
+9207,92,Teluk Wondama,Kabupaten
+9208,92,Kaimana,Kabupaten
+9211,92,Manokwari Selatan,Kabupaten
+9212,92,Pegunungan Arfak,Kabupaten
+9301,93,Merauke,Kabupaten
+9302,93,Boven Digoel,Kabupaten
+9303,93,Mappi,Kabupaten
+9304,93,Asmat,Kabupaten
+9401,94,Nabire,Kabupaten
+9402,94,Puncak Jaya,Kabupaten
+9403,94,Paniai,Kabupaten
+9404,94,Mimika,Kabupaten
+9405,94,Puncak,Kabupaten
+9406,94,Dogiyai,Kabupaten
+9407,94,Intan Jaya,Kabupaten
+9408,94,Deiyai,Kabupaten
+9501,95,Jayawijaya,Kabupaten
+9502,95,Kab Pegunungan Bintang,Kabupaten
+9503,95,Yahukimo,Kabupaten
+9504,95,Tolikara,Kabupaten
+9505,95,Mamberamo Tengah,Kabupaten
+9506,95,Yalimo,Kabupaten
+9507,95,Lanny Jaya,Kabupaten
+9508,95,Nduga,Kabupaten
+9601,96,Sorong,Kabupaten
+9602,96,Sorong Selatan,Kabupaten
+9603,96,Raja Ampat,Kabupaten
+9604,96,Tambrauw,Kabupaten
+9605,96,Maybrat,Kabupaten
+9671,96,Sorong,Kota

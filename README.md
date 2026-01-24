@@ -11,6 +11,8 @@
 
 **Live API**: [https://konoland-api.vercel.app](https://konoland-api.vercel.app) 🆓 Free to use!
 
+📋 [Changelog](CHANGELOG.md)
+
 </div>
 
 ## 📖 About
@@ -23,9 +25,11 @@
 
 - 🆓 **100% Free** - No API keys required
 - 🚀 **Fast & Reliable** - Powered by Vercel serverless
-- 📊 **Complete Data** - 34 provinces, 514 regencies, 7,000+ districts, 80,000+ villages
+- 📊 **Latest 2025 Data** - 38 provinces, 514 regencies, 7,285 districts, 83,762 villages
+- 📮 **Complete Postal Codes** - 100% coverage for all villages
 - 🔄 **Backward Compatible** - Drop-in replacement for legacy API
 - 📦 **Self-Hostable** - Deploy to your own Vercel account
+- 🔀 **Advanced Features** - Sorting, pagination, and legacy aliases support
 
 ## 🚀 Quick Start
 
@@ -212,7 +216,7 @@ CREATE TABLE villages (
 
 ### Step 3: Import CSV Data
 
-CSV files are in `data/2022/` directory - **ready to import, columns match database exactly!**
+CSV files are in `data/2025/` directory - **ready to import, columns match database exactly!**
 
 1. Go to Supabase **Table Editor**
 2. Import in this order (important for foreign keys!):
@@ -227,10 +231,10 @@ CSV files are in `data/2022/` directory - **ready to import, columns match datab
    - ✅ Columns will auto-map correctly (no manual mapping needed!)
 
 **CSV Files** (columns match database exactly):
-- `provinces.csv`: `code, province` (34 provinces)
+- `provinces.csv`: `code, province` (38 provinces)
 - `regencies.csv`: `code, province_code, regency, type` (514 regencies)
-- `districts.csv`: `code, regency_code, district` (7,276 districts)
-- `villages.csv`: `code, district_code, village, postal_code` (83,762 villages)
+- `districts.csv`: `code, regency_code, district` (7,285 districts)
+- `villages.csv`: `code, district_code, village, postal_code` (83,762 villages with 100% postal codes)
 
 ### Step 4: Configure Environment Variables
 
@@ -289,12 +293,18 @@ npm run lint           # Run linter
 
 ## 📊 Data Statistics
 
-- **34 Provinces** (Provinsi)
+**2025 Data** (Kepmendagri No 300.2.2-2138 Tahun 2025):
+- **38 Provinces** (Provinsi) - Including 4 new Papua provinces
 - **514 Regencies** (Kota/Kabupaten)
-- **7,276 Districts** (Kecamatan)
-- **83,762 Villages** (Desa/Kelurahan)
+- **7,285 Districts** (Kecamatan)
+- **83,762 Villages** (Desa/Kelurahan) - With 100% postal code coverage
 
-Data is accurate as of 2022 and follows official Indonesian government structure.
+Data is accurate as of **2025** and follows official Indonesian government structure.
+
+**What's New in 2025:**
+- 4 new provinces in Papua region (codes 93-96)
+- Complete postal code data for all villages
+- Updated administrative boundaries
 
 ## 🔄 Backward Compatibility
 
@@ -331,8 +341,10 @@ Existing applications can switch to this API without any code changes!
 
 ## 📋 TODO / Roadmap
 
-- [ ] **Update Data to 2025** - Update administrative region data with the latest 2025 data from Kemendagri (Kementerian Dalam Negeri)
+- [x] ~~Update Data to 2025~~ **✅ DONE** (January 2026)
+- [x] ~~Integrate Postal Codes~~ **✅ DONE** (100% coverage)
 - [ ] Add caching layer for improved performance
+- [ ] Add API rate limiting
 
 ## 🤝 Contributing
 
@@ -352,7 +364,7 @@ ISC License - See [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - **[Wilayah Nusantara API](https://github.com/theodevoid/wilayah-nusantara)** by [@theodevoid](https://github.com/theodevoid) - Original inspiration
-- Indonesian government for administrative region data
+- **Kementerian Dalam Negeri (Kemendagri)** - Official 2025 data
 - [Supabase](https://supabase.com) for free PostgreSQL hosting
 - [Vercel](https://vercel.com) for free serverless hosting
 
