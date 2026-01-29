@@ -32,11 +32,12 @@ In **your fork**:
 - **Automatic**: Every push to `main` runs the workflow and deploys the static API.
 - **Manual**: **Actions** → **Deploy Static API to GitHub Pages** → **Run workflow**.
 
-Your static API will be available at:
+Your site will be available at:
 
-`https://<your-username>.github.io/konoland-api/api/`
+- **Landing page**: `https://<your-username>.github.io/konoland-api/` (same as the main project landing page)
+- **Static API**: `https://<your-username>.github.io/konoland-api/api/` (e.g. `.../api/provinces.json`)
 
-(Replace `konoland-api` with your repo name if you renamed it.)
+(Replace `konoland-api` with your repo name if you renamed it.) When served from GitHub Pages, the landing page uses the same-origin static API for demos and the playground.
 
 ## Endpoints (same shape as main API)
 

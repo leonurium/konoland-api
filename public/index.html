@@ -1347,6 +1347,22 @@
     </footer>
 
     <script>
+        // API base: when on GitHub Pages use same-origin static API
+        const USE_STATIC_API = (typeof window !== 'undefined' && window.location.hostname.indexOf('github.io') !== -1);
+        const API_BASE = USE_STATIC_API ? '' : 'https://konoland-api.vercel.app';
+        function apiProvincesUrl() { return USE_STATIC_API ? 'api/provinces.json' : API_BASE + '/province?limit=100&sortBy=province'; }
+        function apiRegenciesUrl(code) { return USE_STATIC_API ? ('api/regencies/' + code + '.json') : (API_BASE + '/regency?provinceCode=' + code + '&limit=200&sortBy=regency'); }
+        function apiDistrictsUrl(code) { return USE_STATIC_API ? ('api/districts/' + code + '.json') : (API_BASE + '/district?regencyCode=' + code + '&limit=200&sortBy=district'); }
+        function apiVillagesUrl(code) { return USE_STATIC_API ? ('api/villages/' + code + '.json') : (API_BASE + '/village?districtCode=' + code + '&limit=500&sortBy=village'); }
+        function apiTryEndpointUrl(endpoint) {
+            if (!USE_STATIC_API) return API_BASE + '/' + endpoint;
+            if (endpoint.startsWith('province')) return 'api/provinces.json';
+            const mReg = endpoint.match(/provinceCode=(\d+)/); if (mReg) return 'api/regencies/' + mReg[1] + '.json';
+            const mDist = endpoint.match(/regencyCode=(\d+)/); if (mDist) return 'api/districts/' + mDist[1] + '.json';
+            const mVill = endpoint.match(/districtCode=(\d+)/); if (mVill) return 'api/villages/' + mVill[1] + '.json';
+            return 'api/provinces.json';
+        }
+
         // Demo App - Load Provinces on page load
         async function loadDemoProvinces() {
             const select = document.getElementById('demo-province');
@@ -1355,7 +1371,7 @@
             loading.style.display = 'block';
             
             try {
-                const response = await fetch('https://konoland-api.vercel.app/province?limit=100&sortBy=province');
+                const response = await fetch(apiProvincesUrl());
                 const data = await response.json();
                 
                 if (data.data && data.data.length > 0) {
@@ -1379,6 +1395,13 @@
         // Demo App - Province change handler
         document.addEventListener('DOMContentLoaded', () => {
             loadDemoProvinces();
+
+            // Show correct API URLs in playground (full URL for copy)
+            const base = USE_STATIC_API ? (window.location.origin + (window.location.pathname.replace(/\/$/, '') || '')) : API_BASE;
+            if (document.getElementById('url-provinces')) document.getElementById('url-provinces').textContent = USE_STATIC_API ? (base + '/api/provinces.json') : (API_BASE + '/province?limit=5&sortBy=province');
+            if (document.getElementById('url-regencies')) document.getElementById('url-regencies').textContent = USE_STATIC_API ? (base + '/api/regencies/11.json') : (API_BASE + '/regency?provinceCode=11&limit=5');
+            if (document.getElementById('url-districts')) document.getElementById('url-districts').textContent = USE_STATIC_API ? (base + '/api/districts/1101.json') : (API_BASE + '/district?regencyCode=1101&limit=5');
+            if (document.getElementById('url-villages')) document.getElementById('url-villages').textContent = USE_STATIC_API ? (base + '/api/villages/110101.json') : (API_BASE + '/village?districtCode=110101&limit=5');
 
             const provinceSelect = document.getElementById('demo-province');
             const regencySelect = document.getElementById('demo-regency');
@@ -1407,7 +1430,7 @@
                 loading.style.display = 'block';
 
                 try {
-                    const response = await fetch(`https://konoland-api.vercel.app/regency?provinceCode=${provinceCode}&limit=200&sortBy=regency`);
+                    const response = await fetch(apiRegenciesUrl(provinceCode));
                     const data = await response.json();
                     
                     if (data.data && data.data.length > 0) {
@@ -1441,7 +1464,7 @@
                 loading.style.display = 'block';
 
                 try {
-                    const response = await fetch(`https://konoland-api.vercel.app/district?regencyCode=${regencyCode}&limit=200&sortBy=district`);
+                    const response = await fetch(apiDistrictsUrl(regencyCode));
                     const data = await response.json();
                     
                     if (data.data && data.data.length > 0) {
@@ -1473,7 +1496,7 @@
                 loading.style.display = 'block';
 
                 try {
-                    const response = await fetch(`https://konoland-api.vercel.app/village?districtCode=${districtCode}&limit=500&sortBy=village`);
+                    const response = await fetch(apiVillagesUrl(districtCode));
                     const data = await response.json();
                     
                     if (data.data && data.data.length > 0) {
@@ -1551,7 +1574,7 @@
             responseBlock.classList.add('show');
             
             try {
-                const response = await fetch('https://konoland-api.vercel.app/' + endpoint);
+                const response = await fetch(apiTryEndpointUrl(endpoint));
                 const data = await response.json();
                 responseContent.textContent = JSON.stringify(data, null, 2);
             } catch (error) {

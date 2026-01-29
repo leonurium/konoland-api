@@ -26,6 +26,9 @@ jobs:
       - name: Generate static API
         run: node scripts/generate-static-api.js
 
+      - name: Copy landing page
+        run: cp public/index.html static-api/index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
