@@ -30,6 +30,7 @@
 - 🔄 **Backward Compatible** - Drop-in replacement for legacy API
 - 📦 **Self-Hostable** - Deploy to your own Vercel account
 - 🔀 **Advanced Features** - Sorting, pagination, and legacy aliases support
+- 📄 **Static API** - Same data as JSON files for GitHub Pages (no backend)
 
 ## 🚀 Quick Start
 
@@ -48,7 +49,11 @@ curl https://konoland-api.vercel.app/province?name=Jawa
 ```
 
 ### Option 2: Static API on GitHub Pages (no backend)
-Same data as JSON files you can host on GitHub Pages. **Fork** → **Settings → Pages → Source: GitHub Actions** → push to `main` (or run the "Deploy Static API to GitHub Pages" workflow). Your API: `https://<username>.github.io/<repo>/api/provinces.json`. Full guide: [docs/STATIC_API.md](docs/STATIC_API.md).
+Same data as static JSON files you can host on GitHub Pages—no database or server required. **Fork** → **Settings → Pages → Source: GitHub Actions** → push to `main` (or run the "Deploy Static API to GitHub Pages" workflow). You get:
+- **Landing page**: `https://<username>.github.io/<repo>/`
+- **Static API**: `https://<username>.github.io/<repo>/api/` (e.g. `.../api/provinces.json`)
+
+Full guide: [docs/STATIC_API.md](docs/STATIC_API.md). Test locally: `npm run generate:static` then `./scripts/test-static-api.sh [BASE_URL]`.
 
 ### Option 3: Self-Host on Vercel (5 minutes)
 1. **Fork this repository** on GitHub
@@ -289,8 +294,11 @@ npm run start:dev
 npm run start:dev      # Start with hot reload
 npm run build          # Build for production
 npm run start:prod     # Start production server
+npm run generate:static # Generate static API JSON from data/2025 (output: static-api/api/)
 npm run lint           # Run linter
 ```
+
+To test the static API locally after generating: `./scripts/test-static-api.sh` (optional base URL: `./scripts/test-static-api.sh https://leonurium.github.io/konoland-api/api`).
 
 ## 📊 Data Statistics
 
@@ -344,6 +352,7 @@ Existing applications can switch to this API without any code changes!
 
 - [x] ~~Update Data to 2025~~ **✅ DONE** (January 2026)
 - [x] ~~Integrate Postal Codes~~ **✅ DONE** (100% coverage)
+- [x] ~~Static API on GitHub Pages~~ **✅ DONE** (landing page + JSON API, same response shape)
 - [ ] Add caching layer for improved performance
 - [ ] Add API rate limiting
 
@@ -365,9 +374,11 @@ ISC License - See [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - **[Wilayah Nusantara API](https://github.com/theodevoid/wilayah-nusantara)** by [@theodevoid](https://github.com/theodevoid) - Original inspiration
+- **[api-wilayah-indonesia](https://github.com/emsifa/api-wilayah-indonesia)** by [@emsifa](https://github.com/emsifa) - Inspiration for static API on GitHub Pages
 - **Kementerian Dalam Negeri (Kemendagri)** - Official 2025 data
 - [Supabase](https://supabase.com) for free PostgreSQL hosting
 - [Vercel](https://vercel.com) for free serverless hosting
+- [GitHub Pages](https://pages.github.com) for static API hosting
 
 ## 📞 Support
 

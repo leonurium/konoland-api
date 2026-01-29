@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## 2026-01-30
+
+### Added
+- 📄 **Static API on GitHub Pages** – Same data as JSON files, no backend required:
+  - Generator script: `scripts/generate-static-api.js` (reads `data/2025/` CSVs, outputs `static-api/api/`)
+  - Response shape matches main API: `{ data, meta }` for lists, single object for detail
+  - Endpoints: `api/provinces.json`, `api/province/{code}.json`, `api/regencies/{provinceCode}.json`, `api/regency/{code}.json`, `api/districts/{regencyCode}.json`, `api/district/{code}.json`, `api/villages/{districtCode}.json`, `api/village/{code}.json`
+- 🌐 **Landing page on GitHub Pages** – Root URL serves the same landing page as Vercel; when served from `*.github.io`, demos and playground use the same-origin static API
+- 🤖 **GitHub Actions workflow** – `Deploy Static API to GitHub Pages` (push to `main` or manual): generates static API, copies `public/index.html` to output, deploys to GitHub Pages (Source: GitHub Actions)
+- 📜 **npm script** – `npm run generate:static` to generate static API locally
+- 🧪 **Test script** – `scripts/test-static-api.sh [BASE_URL]` to test all static API endpoints with curl
+- 📖 **Documentation** – [docs/STATIC_API.md](docs/STATIC_API.md) for fork-and-host steps and endpoint reference
+
+### Changed
+- **README** – Option 2 (Static API) now describes landing page + API URLs, feature bullet for static API, `generate:static` and test script in Available Scripts, roadmap item checked, acknowledgments for api-wilayah-indonesia and GitHub Pages
+
+---
+
 ## 2026-01-24
 
 ### 🎉 Major Update: 2025 Government Data
