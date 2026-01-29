@@ -34,7 +34,6 @@
 ## 🚀 Quick Start
 
 ### Option 1: Use the Free Public API (Easiest)
-
 The API is available for free - no setup needed!
 
 ```bash
@@ -48,8 +47,10 @@ curl https://konoland-api.vercel.app/province/11
 curl https://konoland-api.vercel.app/province?name=Jawa
 ```
 
-### Option 2: Self-Host on Vercel (5 minutes)
+### Option 2: Static API on GitHub Pages (no backend)
+Same data as JSON files you can host on GitHub Pages. **Fork** → **Settings → Pages → Source: GitHub Actions** → push to `main` (or run the "Deploy Static API to GitHub Pages" workflow). Your API: `https://<username>.github.io/<repo>/api/provinces.json`. Full guide: [docs/STATIC_API.md](docs/STATIC_API.md).
 
+### Option 3: Self-Host on Vercel (5 minutes)
 1. **Fork this repository** on GitHub
 2. **Create a Supabase project** at [supabase.com](https://supabase.com) (free tier works)
 3. **Get your database URL** from Supabase Settings → Database
