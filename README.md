@@ -50,7 +50,6 @@ curl https://konoland-api.vercel.app/province?name=Jawa
 
 ### Option 2: Static API on GitHub Pages (no backend)
 Same data as static JSON files you can host on GitHub Pages—no database or server required. **Fork** → **Settings → Pages → Source: GitHub Actions** → push to `main` (or run the "Deploy Static API to GitHub Pages" workflow). You get:
-- **Landing page**: `https://<username>.github.io/<repo>/`
 - **Static API**: `https://<username>.github.io/<repo>/api/` (e.g. `.../api/provinces.json`)
 
 Full guide: [docs/STATIC_API.md](docs/STATIC_API.md). Test locally: `npm run generate:static` then `./scripts/test-static-api.sh [BASE_URL]`.
@@ -298,8 +297,6 @@ npm run generate:static # Generate static API JSON from data/2025 (output: stati
 npm run lint           # Run linter
 ```
 
-To test the static API locally after generating: `./scripts/test-static-api.sh` (optional base URL: `./scripts/test-static-api.sh https://leonurium.github.io/konoland-api/api`).
-
 ## 📊 Data Statistics
 
 **2025 Data** (Kepmendagri No 300.2.2-2138 Tahun 2025):
@@ -374,7 +371,6 @@ ISC License - See [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - **[Wilayah Nusantara API](https://github.com/theodevoid/wilayah-nusantara)** by [@theodevoid](https://github.com/theodevoid) - Original inspiration
-- **[api-wilayah-indonesia](https://github.com/emsifa/api-wilayah-indonesia)** by [@emsifa](https://github.com/emsifa) - Inspiration for static API on GitHub Pages
 - **Kementerian Dalam Negeri (Kemendagri)** - Official 2025 data
 - [Supabase](https://supabase.com) for free PostgreSQL hosting
 - [Vercel](https://vercel.com) for free serverless hosting

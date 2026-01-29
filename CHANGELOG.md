@@ -17,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🌐 **Landing page on GitHub Pages** – Root URL serves the same landing page as Vercel; when served from `*.github.io`, demos and playground use the same-origin static API
 - 🤖 **GitHub Actions workflow** – `Deploy Static API to GitHub Pages` (push to `main` or manual): generates static API, copies `public/index.html` to output, deploys to GitHub Pages (Source: GitHub Actions)
 - 📜 **npm script** – `npm run generate:static` to generate static API locally
-- 🧪 **Test script** – `scripts/test-static-api.sh [BASE_URL]` to test all static API endpoints with curl
 - 📖 **Documentation** – [docs/STATIC_API.md](docs/STATIC_API.md) for fork-and-host steps and endpoint reference
 
 ### Changed
