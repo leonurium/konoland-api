@@ -62,3 +62,22 @@ Generated from `data/2025/` CSVs (same as the main API). Regenerate after updati
 
 - No pagination or sorting: each list file returns all items for that parent.
 - Data is fixed at build time; update CSVs and redeploy to refresh.
+
+## Bandwidth & Shared API
+
+**The public static API** (`https://leonurium.github.io/konoland-api/api/`) is shared among all users and subject to **GitHub Pages' 100GB/month bandwidth limit**.
+
+- Average JSON file size: ~1KB per request
+- Estimated capacity: ~3 million requests/month (shared)
+- If this limit is reached, the API may be temporarily unavailable
+
+### Why you should fork and self-host (2-minute setup!)
+
+**For production use or high traffic apps**, we strongly recommend forking and hosting on **your own GitHub Pages**:
+
+**Free forever** – No costs, GitHub Pages is 100% free  
+**Your own 100GB/month** – Dedicated bandwidth, not shared  
+**100% uptime** – No dependency on the shared public API  
+**Fast** – Static files served from GitHub's CDN  
+**Easy** – Just fork, enable Pages, done!  
+**Customizable** – Add your own data or modify responses

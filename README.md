@@ -54,6 +54,8 @@ Same data as static JSON files you can host on GitHub Pages—no database or ser
 
 Full guide: [docs/STATIC_API.md](docs/STATIC_API.md). Test locally: `npm run generate:static` then `./scripts/test-static-api.sh [BASE_URL]`.
 
+> **⚠️ Important**: The public static API at `https://leonurium.github.io/konoland-api/` is shared among all users and subject to GitHub Pages' **100GB/month bandwidth limit** (~3M requests/month). For production use or high traffic, **please fork and host on your own GitHub Pages** (100% free, takes 2 minutes). This gives you your own dedicated bandwidth and ensures your app always has access to the API. Plus, you can customize the data or add features!
+
 ### Option 3: Self-Host on Vercel (5 minutes)
 1. **Fork this repository** on GitHub
 2. **Create a Supabase project** at [supabase.com](https://supabase.com) (free tier works)

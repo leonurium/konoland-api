@@ -20,7 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📖 **Documentation** – [docs/STATIC_API.md](docs/STATIC_API.md) for fork-and-host steps and endpoint reference
 
 ### Changed
-- **README** – Option 2 (Static API) now describes landing page + API URLs, feature bullet for static API, `generate:static` and test script in Available Scripts, roadmap item checked, acknowledgments for api-wilayah-indonesia and GitHub Pages
+- **README** – Option 2 (Static API) now describes landing page + API URLs, feature bullet for static API, `generate:static` and test script in Available Scripts, roadmap item checked, acknowledgments for api-wilayah-indonesia and GitHub Pages, bandwidth limitation note to encourage forking
+- **docs/STATIC_API.md** – Added "Bandwidth & Shared API" section explaining GitHub Pages' 100GB/month limit and why users should fork for production use
 
 ---
 
