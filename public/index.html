@@ -714,6 +714,48 @@
             animation: fadeIn 0.3s;
         }
 
+        /* Search Playground */
+        .search-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 14px 16px;
+            background: var(--dark-lighter);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 0.95em;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-input::placeholder {
+            color: rgba(148, 163, 184, 0.8);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+        }
+
+        .helper-note {
+            margin-top: 12px;
+            font-size: 0.9em;
+            color: var(--text-muted);
+        }
+
+        .helper-note strong {
+            color: var(--text);
+        }
+
         /* Branding Section */
         .branding-section {
             padding: 80px 40px;
@@ -1218,6 +1260,7 @@
                         <button class="endpoint-tab" onclick="selectEndpoint('regencies')">Regencies</button>
                         <button class="endpoint-tab" onclick="selectEndpoint('districts')">Districts</button>
                         <button class="endpoint-tab" onclick="selectEndpoint('villages')">Villages</button>
+                        <button class="endpoint-tab" onclick="selectEndpoint('search')">Search</button>
                     </div>
                 </div>
                 
@@ -1284,6 +1327,29 @@
                             <span id="loading-villages" style="display:none;" class="spinner"></span>
                             <span id="text-villages">Run Request</span>
                         </button>
+                    </div>
+
+                    <div id="endpoint-search" class="endpoint-content" style="display:none;">
+                        <div class="request-block">
+                            <div class="request-label">REQUEST</div>
+                            <div class="request-url">
+                                <span class="method-badge">GET</span>
+                                <span class="url-text" id="url-search">https://konoland-api.vercel.app/search?q=jakarta</span>
+                                <button class="copy-icon" onclick="copyUrl('url-search')"><i class="far fa-copy"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="search-row">
+                            <input id="search-q" class="search-input" type="text" placeholder="Type a name (e.g., jakarta, aceh, bandung, teupah)..." autocomplete="off" />
+                            <button class="btn btn-primary" id="search-run-btn" onclick="trySearch()">
+                                <span id="loading-search" style="display:none;" class="spinner"></span>
+                                <span id="text-search">Run Request</span>
+                            </button>
+                        </div>
+
+                        <div class="helper-note" id="search-helper-note">
+                            Returns typed results: <strong>province</strong> / <strong>regency</strong> / <strong>district</strong> / <strong>village</strong>.
+                        </div>
                     </div>
 
                     <div id="response-block" class="response-block">
@@ -1354,6 +1420,7 @@
         function apiRegenciesUrl(code) { return USE_STATIC_API ? ('api/regencies/' + code + '.json') : (API_BASE + '/regency?provinceCode=' + code + '&limit=200&sortBy=regency'); }
         function apiDistrictsUrl(code) { return USE_STATIC_API ? ('api/districts/' + code + '.json') : (API_BASE + '/district?regencyCode=' + code + '&limit=200&sortBy=district'); }
         function apiVillagesUrl(code) { return USE_STATIC_API ? ('api/villages/' + code + '.json') : (API_BASE + '/village?districtCode=' + code + '&limit=500&sortBy=village'); }
+        function apiSearchUrl(q) { return API_BASE + '/search?q=' + encodeURIComponent(q); }
         function apiTryEndpointUrl(endpoint) {
             if (!USE_STATIC_API) return API_BASE + '/' + endpoint;
             if (endpoint.startsWith('province')) return 'api/provinces.json';
@@ -1402,6 +1469,25 @@
             if (document.getElementById('url-regencies')) document.getElementById('url-regencies').textContent = USE_STATIC_API ? (base + '/api/regencies/11.json') : (API_BASE + '/regency?provinceCode=11&limit=5');
             if (document.getElementById('url-districts')) document.getElementById('url-districts').textContent = USE_STATIC_API ? (base + '/api/districts/1101.json') : (API_BASE + '/district?regencyCode=1101&limit=5');
             if (document.getElementById('url-villages')) document.getElementById('url-villages').textContent = USE_STATIC_API ? (base + '/api/villages/110101.json') : (API_BASE + '/village?districtCode=110101&limit=5');
+            if (document.getElementById('url-search')) document.getElementById('url-search').textContent = USE_STATIC_API ? (base + ' (search not available on static)') : (API_BASE + '/search?q=jakarta');
+
+            // Search tab: disable on static API (GitHub Pages)
+            const searchRunBtn = document.getElementById('search-run-btn');
+            const searchInput = document.getElementById('search-q');
+            const searchNote = document.getElementById('search-helper-note');
+            if (USE_STATIC_API) {
+                if (searchRunBtn) searchRunBtn.disabled = true;
+                if (searchInput) searchInput.disabled = true;
+                if (searchNote) {
+                    searchNote.innerHTML = 'Search is <strong>not available</strong> on GitHub Pages static API. Use the Vercel API for <code>/search</code>.';
+                }
+            } else {
+                if (searchInput) {
+                    searchInput.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') trySearch();
+                    });
+                }
+            }
 
             const provinceSelect = document.getElementById('demo-province');
             const regencySelect = document.getElementById('demo-regency');
@@ -1575,6 +1661,43 @@
             
             try {
                 const response = await fetch(apiTryEndpointUrl(endpoint));
+                const data = await response.json();
+                responseContent.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseContent.textContent = 'Error: ' + error.message;
+            } finally {
+                if (loadingSpinner) loadingSpinner.style.display = 'none';
+                if (buttonText) buttonText.textContent = 'Run Request';
+            }
+        }
+
+        async function trySearch() {
+            const responseBlock = document.getElementById('response-block');
+            const responseContent = document.getElementById('response-content');
+            const loadingSpinner = document.getElementById('loading-search');
+            const buttonText = document.getElementById('text-search');
+            const input = document.getElementById('search-q');
+
+            if (USE_STATIC_API) {
+                responseContent.textContent = 'Search is not available on GitHub Pages static API.\n\nUse the Vercel API endpoint: /search?q=...';
+                responseBlock.classList.add('show');
+                return;
+            }
+
+            const q = (input && input.value ? input.value : '').trim();
+            if (!q) {
+                responseContent.textContent = 'Please enter a search term in q (e.g., "jakarta").';
+                responseBlock.classList.add('show');
+                return;
+            }
+
+            if (loadingSpinner) loadingSpinner.style.display = 'inline-block';
+            if (buttonText) buttonText.textContent = 'Loading...';
+            responseContent.textContent = 'Fetching data...';
+            responseBlock.classList.add('show');
+
+            try {
+                const response = await fetch(apiSearchUrl(q));
                 const data = await response.json();
                 responseContent.textContent = JSON.stringify(data, null, 2);
             } catch (error) {
