@@ -45,3 +45,6 @@ banner.png.md
 # Generated static API (deployed to gh-pages by CI)
 static-api/
 
+# AI
+.specstory
+.cursorindexingignore

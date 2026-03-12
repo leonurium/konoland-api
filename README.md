@@ -30,6 +30,7 @@
 - 🔄 **Backward Compatible** - Drop-in replacement for legacy API
 - 📦 **Self-Hostable** - Deploy to your own Vercel account
 - 🔀 **Advanced Features** - Sorting, pagination, and legacy aliases support
+- 🔎 **Search Endpoint** - One query across provinces/regencies/districts/villages
 - 📄 **Static API** - Same data as JSON files for GitHub Pages (no backend)
 
 ## 🚀 Quick Start
@@ -46,6 +47,9 @@ curl https://konoland-api.vercel.app/province/11
 
 # Search by name
 curl https://konoland-api.vercel.app/province?name=Jawa
+
+# Search across all levels (province/regency/district/village)
+curl "https://konoland-api.vercel.app/search?q=jakarta"
 ```
 
 ### Option 2: Static API on GitHub Pages (no backend)
@@ -53,6 +57,8 @@ Same data as static JSON files you can host on GitHub Pages—no database or ser
 - **Static API**: `https://<username>.github.io/<repo>/api/` (e.g. `.../api/provinces.json`)
 
 Full guide: [docs/STATIC_API.md](docs/STATIC_API.md). Test locally: `npm run generate:static` then `./scripts/test-static-api.sh [BASE_URL]`.
+
+> **Search endpoint note**: GitHub Pages is **static hosting**. The dynamic endpoint `GET /search?q=...` **only works on the Vercel/server backend**, not on the GitHub Pages static API JSON files. If you need search on static hosting, you must ship a **precomputed search index** and do filtering on the client.
 
 > **⚠️ Important**: The public static API at `https://leonurium.github.io/konoland-api/` is shared among all users and subject to GitHub Pages' **100GB/month bandwidth limit** (~3M requests/month). For production use or high traffic, **please fork and host on your own GitHub Pages** (100% free, takes 2 minutes). This gives you your own dedicated bandwidth and ensures your app always has access to the API. Plus, you can customize the data or add features!
 
@@ -109,6 +115,31 @@ Full guide: [docs/STATIC_API.md](docs/STATIC_API.md). Test locally: `npm run gen
 | `GET /district/:code` | Get district by code | `/district/110101` |
 | `GET /village` | List villages (paginated) | `/village?districtCode=110101` |
 | `GET /village/:code` | Get village by code | `/village/1101012001` |
+| `GET /search` | Search across province/regency/district/village | `/search?q=jakarta` |
+
+### `GET /search` (cross-entity search)
+
+Search supports a single query parameter:
+- `q` - Search term (partial match, case-insensitive)
+
+Response format:
+```json
+{
+  "data": [
+    { "type": "province", "item": { "code": "11", "province": "Aceh" } },
+    { "type": "regency", "item": { "code": "1101", "regency": "...", "province": { "code": "11", "province": "Aceh" } } },
+    { "type": "district", "item": { "code": "1101010", "district": "...", "regency": { "code": "1101", "regency": "...", "province": { "code": "11", "province": "Aceh" } } } },
+    { "type": "village", "item": { "code": "1101010001", "village": "...", "postalCode": "...", "district": { "code": "1101010", "district": "...", "regency": { "code": "1101", "regency": "...", "province": { "code": "11", "province": "Aceh" } } } } }
+  ]
+}
+```
+
+Example:
+```bash
+curl "https://konoland-api.vercel.app/search?q=jakarta"
+```
+
+> Tip (zsh): always **quote** URLs containing `?` to avoid shell globbing errors.
 
 ### Query Parameters
 

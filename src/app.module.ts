@@ -7,6 +7,7 @@ import { ProvinceModule } from './modules/province/province.module';
 import { RegencyModule } from './modules/regency/regency.module';
 import { DistrictModule } from './modules/district/district.module';
 import { VillageModule } from './modules/village/village.module';
+import { SearchModule } from './modules/search/search.module';
 import { Province } from './entities/province.entity';
 import { Regency } from './entities/regency.entity';
 import { District } from './entities/district.entity';
@@ -17,7 +18,7 @@ import { AppController } from './app.controller';
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
-      exclude: ['/province*', '/regency*', '/district*', '/village*'],
+      exclude: ['/province*', '/regency*', '/district*', '/village*', '/search*'],
     }),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -51,6 +52,7 @@ import { AppController } from './app.controller';
     RegencyModule,
     DistrictModule,
     VillageModule,
+    SearchModule,
   ],
   controllers: [AppController],
 })

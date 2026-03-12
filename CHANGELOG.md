@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## 2026-03-12
+
+### Added
+- 🔎 **Search endpoint** – `GET /search?q=...` searches across **provinces, regencies, districts, and villages** and returns typed results with full detail relations (e.g., village includes district → regency → province).
+- ✅ **Automated tests** – Added unit + HTTP-level tests for the search endpoint behavior.
+
+### Documentation
+- **README** – Added `/search` endpoint reference, curl examples, and clarified that dynamic search works on Vercel backend but not on GitHub Pages static API.
+
+---
+
 ## 2026-01-30
 
 ### Added
